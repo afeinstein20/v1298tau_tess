@@ -75,7 +75,7 @@ ax1.errorbar(time, flux, yerr=flux_err,
              markeredgecolor=edgecolor, zorder=1,
              ecolor=edgecolor, capsize=3)
 
-ax1.plot(time, model, lw=2, color='#807f7e', zorder=2,
+ax1.plot(time, model, lw=2, color='#0fa0cc', zorder=2,
          label='GP Model')
 ax1.set_xlim(time[0], time[-1])
 
