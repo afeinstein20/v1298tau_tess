@@ -64,13 +64,124 @@
 \section{Introduction}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Planetary sizes are expected to evolve over time, due to a variety of endogenous and exogenous physical processes including gravitational contraction, atmospheric heating and mass-loss, and core-envelope interactions \citep[e.g.][]{OwenWu2013, Lopez2013, Jin2014, ChenRogers2016, Ginzburg2018}. Dramatic size evolution is expected at early stages, when planets are still contracting and radiating away the energy from their formation, and when host stars are heating planetary atmospheres with high levels of X-ray and ultraviolet radiation. Since the size evolution of any individual planet is believed to be slow relative to typical observational baselines, the best way to make inferences about the size evolution of exoplanets is by measuring the sizes of large numbers of planets across a range of ages. 
+
+NASA's Transiting Exoplanet Survey Satellite \citep[TESS,][]{Ricker2015} has made significant inroads toward this objective. \tess's observations of $\sim 90 \%$ of the sky have allowed for exoplanet transit searches around stars ranging from the pre-main sequence to the giant branch. It is through targeted surveys of young stars such as the THYME \citep[e.g.][]{Newton2019}, PATHOS \citep[e.g.][]{Nardiello2020}, and CDIPS \citep[e.g.][]{Bouma2020} surveys, along with case studies of individual systems \citep[e.g.][]{benatti19, Plavchan2020, Hedges2021, Zhou2021} that the timeline for planetary radius evolution can be pieced together. 
+
+The \sname planetary system is one particularly valuable benchmark for understanding the size evolution of exoplanets. \sname is a pre-main sequence, approximately solar-mass star that was observed in 2015 by NASA's \textit{K2} mission \citep{Howell2014}. Analysis of the \textit{K2} data revealed the presence of four transiting planets, all with sizes between the sizes of Neptune and Jupiter \citep{David2019a, David2019b}. There are no other known examples of exoplanetary systems with so many planets larger than Neptune interior to 0.5~au, despite the high completeness of the Kepler survey to large ($>5$~\rearth), close-in planets. This observation raises the possibility of a causal connection between the extreme youth of \sname and the uncommonly large sizes of its planets.  
+
+The youth of \sname was initially established on the basis of its strong X-ray emission \citep{Wichmann1996} and high photospheric lithium abundance \citep{Wichmann2000}. An analysis of Gaia DR1 astronometric data found \sname was co-moving with 8 other stars \citep[Group 29;]{Oh2017} and derived an age of $\sim 40$~Myr \citep{Luhman2018}. However, more recent analyses based on Gaia EDR3 astrometry suggests \sname belongs to either the D2 or D3 subgroups of Taurus, both of which have estimates ages $\lesssim$10~Myr \citep[][Gaidos et al. submitted]{Krolikowski2021}. Other studies focused specifically on the \sname system have estimated its age to be 23$\pm$4~Myr from comparison with empirical and theoretical isochrones \citep{David2019b}, or 28$\pm$4~Myr from isochrone fitting to the \citet{Luhman2018} Group 29 membership list given Gaia EDR3 data (Johnson et al. submitted).
+
+%An analysis of the Gaia DR1 astrometric data found that \sname was co-moving with 8 other stars \citep{Oh2017}. \citet{Luhman2018} used Gaia DR2 astrometry to expand the membership of this group, referred to as Oh's Group 29, and examine its relationship to the Taurus-Auriga star-forming region. \citet{Luhman2018} concluded that while Group 29 is indeed young ($\sim$40~Myr), the collection of stars was physically unrelated to the traditional star-forming groups within the Taurus-Auriga complex.  
+
+Given the system's youth and potential to reveal information about the initial conditions of close-in planetary systems, \sname has been the target for extensive follow-up observations. These include efforts to constrain planet masses with radial velocities \citep{Beichman2019}, measure the spin-orbit alignments of planet c \citep{Feinstein21} and planet b (Johnson et al. submitted; Gaidos et al. submitted), measure or constrain atmospheric mass-loss rates for the innermost planets \citep{Schlawin21, Vissapragada21}, and an approved program to study the planetary atmospheres using the James Webb Space Telescope \citep{Desert2021}.
+
+Here we report on newly acquired TESS observations of \sname which help to refine the orbital ephemerides of the transiting planets and enable comparison of the planet sizes inferred from two different telescopes with different bandpasses (\tess\ and Kepler). We describe the observations in Section~\ref{sec:observations}, our analysis procedures in Section~\ref{sec:analysis}, and our primary conclusions in Section~\ref{sec:conclusions}.
+
+\section{TESS Observations} \label{sec:observations}
+
+During its Extended Mission Cycle 4, \tess\ is re-observing many of the previous \textit{K2} fields. \sname (TIC 15756231) was observed by \tess\ in Sectors 43 (UT 16 Sep 2021 to UT 12 Oct 2021) at 10-minute cadence within the Full-Frame Images (FFIs) and at 2-minute cadence, which are processed by the Science Processing Operations Center (SPOC) pipeline \citep{jenkinsSPOC2016}. 
+
+Initially, we used the \texttt{tica} \citep{fausnaugh20} software to download calibrated FFIs each orbit for Sectors 43 and 44. These FFIs are quickly available after the data is down-linked. We created light curves from the \texttt{tica}-processed FFIs by modeling the point-spread function (PSF) of \sname. Due to crowding of two other nearby bright sources (see Figure~\ref{fig:tpf}), we found that modeling each star (3 in total) with a 2D Gaussian was sufficient for extracting a non-contaminated light curve. %This allowed us to place initial constraints on the planets' ephemerides. The remaining analysis was completed using the SPOC-processed light curves.
+
+
+
+\iffalse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.45\textwidth,trim={0.25cm 0 0 0}]{TESSaperture.pdf}
+\caption{The \tess\ target pixel file (TPF) overlaid with a sky image of \sname taken with the Sloan Digital Sky Survey (SDSS) i-band. There are two bight nearby sources to \sname. However, selecting the one pixel aperture (white square) encapsulates only \sname and therefore contamination from the nearby sources is negligible. \label{fig:tpf}}
+\end{center}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth,trim={0.25cm 0 0 0}]{static/lightcurve.pdf}
 \caption{\sname extracted light curve from the \texttt{tica}-processed full-frame images, with transits of \allplanets highlighted by color. Top row: extracted light curve with over plotted with our best-fit GP model for stellar variability (black). Middle row: the \tess\ light curve with the stellar variability removed by our model. Bottom rows: zoomed-in regions around the visible transits during the first orbit (third row) and second orbit (last row) from \tess\ Sector 43. \label{fig:transits}}
 \end{center}
 \end{figure*}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Analysis} \label{sec:analysis}
+To model the TESS photometry we used \exoplanet, an open-source Python package for probabilistic inference of exoplanet properties from time series data using gradient descent \citep{exoplanet2019, exoplanet2021}.\begin{deluxetable}{l r r r r}[!ht]
+\tabletypesize{\footnotesize}
+\tablecaption{\sname light curve fitting results. \label{tab:table}}
+\tablehead{\colhead{Planets} & \colhead{c} & \colhead{d} & \colhead{b} & \colhead{e} \\
+\hline\
+P [days]               &  &  &  &  \\
+$T_0$ [BJD - 2457000]  &  &  &  &  \\
+Depth [ppt]            &  &  &  &  \\
+$R_p/R_\star$          &  &  &  &  \\
+$a/R_\star$            &  &  &  &  \\
+$b$                    &  &  &  &  \\
+$e$ [$^\circ$]         &  &  &  &  
+}
+\startdata
+\enddata
+%\tablecomments{}
+\end{deluxetable}
+
+
+\section{Discussion} \label{sec:discussion}
+
+
+\subsection{\textit{K2} vs. \textit{TESS} Radii}
+
+
+\iffalse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.465\textwidth,trim={0.25cm 0 4.5cm 0}]{folded_compare.pdf}
+\caption{Phase-folded transits comparing the transit depth observed with \textit{K2} (gray) and \tess\ (color) with residuals from the best-fit model (solid line) underneath. Gaps in the data are due to other planets' transits being masked. \label{fig:compare}}
+\end{center}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi
+
+
+\subsection{Constraining \planete's Period}
+
+
+\section{Conclusions} \label{sec:conclusions}
+
+A full transit-timing variation (TTV) analysis is presented in Livingston et al. 
+
+
+The Python code used to access the data, process and model the light curve, and reproduce the tables and figures are made publicly available.\footnote{\url{https://github.com/afeinstein20/v1298tau_tess}}
+
+
+\begin{acknowledgments}
+It is a pleasure to thank the Astronomical Data Group at the Flatiron Institute for helpful discussions. ADF acknowledges support from the National Science Foundation Graduate Research Fellowship Program under Grant No. (DGE-1746045).
+
+This research has made use of NASA's Astrophysics Data System Bibliographic Services.
+\end{acknowledgments}
+
+%\vspace{5mm}
+\facilities{TESS, Kepler}
+
+\iffalse
+\software{\texttt{exoplanet} \citep{exoplanet2021},
+          \texttt{EVEREST 2.0} \citep{Luger2018},
+          \texttt{K2SC} \citep{Aigrain2016},
+          \texttt{K2PHOT} \citep{Petigura2018},
+          \texttt{lightkurve} \citep{lightkurve},
+          \texttt{lmfit} \citep{lmfit}, 
+          \texttt{matplotlib} \citep{matplotlib},
+          \texttt{PyMC3} \citep{exoplanet:pymc3},
+          \texttt{starry} \citep{exoplanet:luger18},
+          \texttt{theano} \citep{exoplanet:theano},
+          \texttt{tica} \citep{fausnaugh20}
+          }
+\fi 
+
+
+\bibliography{main}{}
+\bibliographystyle{aasjournal}
 
 \end{document}
