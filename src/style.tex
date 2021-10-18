@@ -1,11 +1,18 @@
 \usepackage{blindtext}
 
+\usepackage{xcolor, fontawesome}
+\definecolor{twitterblue}{RGB}{64,153,255}
+
+\newcommand{\twitter}[1]{\href{https://twitter.com/#1 }{\textcolor{twitterblue}{\faTwitter}\,\tt \textcolor{twitterblue}{@#1}}}
+
+\newcommand{\github}[1]{\href{https://github.com/#1 }{\textcolor{black}{\faGithub}\,\tt \textcolor{black}{@#1}}}
+
 \newcommand{\tess}{\textit{TESS}}
-\newcommand{\sname}{V1298~Tau}
-\newcommand{\allplanets}{V1298~Tau~bcd}
-\newcommand{\planetb}{V1298~Tau~b}
-\newcommand{\planetc}{V1298~Tau~c}
-\newcommand{\planetd}{V1298~Tau~d}
-\newcommand{\planete}{V1298~Tau~e}
-\newcommand{\rearth}{$R_\oplus$}
-\newcommand{\exoplanet}{\texttt{exoplanet}}
+\newcommand{\sname}{V1298~Tau\xspace}
+\newcommand{\allplanets}{V1298~Tau~bcd\xspace}
+\newcommand{\planetb}{V1298~Tau~b\xspace}
+\newcommand{\planetc}{V1298~Tau~c\xspace}
+\newcommand{\planetd}{V1298~Tau~d\xspace}
+\newcommand{\planete}{V1298~Tau~e\xspace}
+\newcommand{\rearth}{$R_\oplus$\xspace}
+\newcommand{\exoplanet}{\texttt{exoplanet}\xspace}
