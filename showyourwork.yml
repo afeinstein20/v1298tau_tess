@@ -1,0 +1,7 @@
+# Tell showyourwork that `src/figures/mandelbrot.py`
+# depends on `src/figures/utils/mandelbrot.py`.
+# Note that paths are relative to the `src/figures/`
+# directory.
+figure_dependencies:
+  mandelbrot.py:
+    - utils/compute_mandelbrot.py
