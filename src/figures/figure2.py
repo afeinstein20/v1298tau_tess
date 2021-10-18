@@ -48,7 +48,7 @@ t0s       = np.array([4648.53, 4645.4, 4648.1, 4648.8,
 durations = np.array([4.66, 5.59, 6.42, 7.45, 5.59, 4.66, 4.66])/24.0
 
 
-path = '../data'
+path = '../../data/'
 gp_mod = np.load(os.path.join(path, 'gp.npy'), allow_pickle=True).tolist()
 map_soln=np.load(os.path.join(path,'map_soln.npy'), allow_pickle=True).tolist()
 extras = np.load(os.path.join(path,'extras.npy'), allow_pickle=True).tolist()
