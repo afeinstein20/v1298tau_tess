@@ -1,0 +1,5 @@
+# Tell showyourwork that `src/figures/my_figure.py`
+# requires the file `src/figures/simulation_results.dat` to run
+figure_dependencies:
+  my_figure.py:
+    - simulation_results.dat

@@ -1,0 +1,45 @@
+% Define document class
+\documentclass[twocolumn]{aastex631}
+
+% Filler text
+\usepackage{blindtext}
+
+% Begin!
+\begin{document}
+
+% Title
+\title{An open source scientific article}
+
+% Author list
+\author{First Author}
+
+% Abstract with filler text
+\begin{abstract}
+    \blindtext
+\end{abstract}
+
+% Main body
+\section{Introduction}
+
+Figure~\ref{fig:my_figure} is an example of a figure that can be generated one of two different ways.
+This is useful in the case that the figure is the result of, e.g., a very expensive simulation or MCMC run, which you might not want to ever run on GitHub Actions!
+Therefore, two rules exist for generating the figure, and which one gets run depends on whether the code is running on GitHub Actions or locally.
+If the code is run locally, the figure is generated from scratch by running the expensive simulation.
+The result of the expensive simulation is then uploaded to Zenodo.
+Conversely, if the code is run on GitHub Actions, the code downloads the simulation results (skipping the expensive step) and then generates the figure.
+Check out the \texttt{Snakefile} and the \texttt{showyourwork.yml} config file for the full implementation of these rules.
+
+% A sample figure generated from an external dataset
+\begin{figure}[ht!]
+    \begin{centering}
+        \includegraphics[width=0.75\linewidth]{figures/my_figure.pdf}
+        \caption{
+            A sample figure generated from the output of a very expensive simulation.
+        }
+        % This label tells showyourwork that the script `figures/my_figure.py'
+        % generates the PDF included above
+        \label{fig:my_figure}
+    \end{centering}
+\end{figure}
+
+\end{document}
