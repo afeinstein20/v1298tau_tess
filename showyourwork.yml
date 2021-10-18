@@ -1,0 +1,5 @@
+# Tell showyourwork that `src/figures/fibonacci.py`
+# requires the file `src/figures/fibonacci.dat` to run
+figure_dependencies:
+  fibonacci.py:
+    - fibonacci.dat
