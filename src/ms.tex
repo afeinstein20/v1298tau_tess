@@ -86,16 +86,16 @@ Initially, we used the \texttt{tica} \citep{fausnaugh20} software to download ca
 
 
 
-\iffalse
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.45\textwidth,trim={0.25cm 0 0 0}]{TESSaperture.pdf}
-\caption{The \tess\ target pixel file (TPF) overlaid with a sky image of \sname taken with the Sloan Digital Sky Survey (SDSS) i-band. There are two bight nearby sources to \sname. However, selecting the one pixel aperture (white square) encapsulates only \sname and therefore contamination from the nearby sources is negligible. \label{fig:tpf}}
+\includegraphics[width=0.45\textwidth,trim={0.25cm 0 0 0}]{static/TESSaperture.pdf}
+\caption{The \tess\ target pixel file (TPF) overlaid with a sky image of \sname taken with the Sloan Digital Sky Survey (SDSS) i-band. \sname is shown in the white circle; nearby sources with \tess\ magnitudes $< 14$ are marked with orange x's. There are two bight nearby sources to \sname. However, selecting the one pixel aperture (white square) encapsulates only \sname and therefore contamination from the nearby sources is negligible. \label{fig:tpf} }
 \end{center}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}[!ht]
@@ -108,23 +108,10 @@ Initially, we used the \texttt{tica} \citep{fausnaugh20} software to download ca
 
 
 \section{Analysis} \label{sec:analysis}
-To model the TESS photometry we used \exoplanet, an open-source Python package for probabilistic inference of exoplanet properties from time series data using gradient descent \citep{exoplanet2019, exoplanet2021}.\begin{deluxetable}{l r r r r}[!ht]
-\tabletypesize{\footnotesize}
-\tablecaption{\sname light curve fitting results. \label{tab:table}}
-\tablehead{\colhead{Planets} & \colhead{c} & \colhead{d} & \colhead{b} & \colhead{e} \\
-\hline\
-P [days]               &  &  &  &  \\
-$T_0$ [BJD - 2457000]  &  &  &  &  \\
-Depth [ppt]            &  &  &  &  \\
-$R_p/R_\star$          &  &  &  &  \\
-$a/R_\star$            &  &  &  &  \\
-$b$                    &  &  &  &  \\
-$e$ [$^\circ$]         &  &  &  &  
-}
-\startdata
-\enddata
-%\tablecomments{}
-\end{deluxetable}
+We simultaneously modeled the transits of \allplanets and the stellar variability using the open-source packages \exoplanet \citep{exoplanet2019, exoplanet2021} and \texttt{PyMC3} \citep{Salvatier16}. Transit timings were originally identified using updated ephemerides from \textit{Spitzer} (Livingston et al. in prep). All other transit parameters (presented in Table~\ref{tab:table}) were initialized using values from \cite{David2019a}. 
+
+
+
 
 
 \section{Discussion} \label{sec:discussion}
@@ -133,16 +120,15 @@ $e$ [$^\circ$]         &  &  &  &
 \subsection{\textit{K2} vs. \textit{TESS} Radii}
 
 
-\iffalse
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.465\textwidth,trim={0.25cm 0 4.5cm 0}]{folded_compare.pdf}
-\caption{Phase-folded transits comparing the transit depth observed with \textit{K2} (gray) and \tess\ (color) with residuals from the best-fit model (solid line) underneath. Gaps in the data are due to other planets' transits being masked. \label{fig:compare}}
+\includegraphics[width=0.465\textwidth,trim={0.25cm 0 4.5cm 0}]{static/folded_compare.pdf}
+\caption{Phase-folded \tess\ data (gray) with the new best-fit model (color) compared to the best-fit parameters from the original \textit{K2} data (black). The residuals between the data and each fit are shown underneath. The transit depth from the \textit{K2} data is deeper than that from \tess, particularly for \planetb and \planete. \label{fig:compare}}
 \end{center}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fi
+
 
 
 \subsection{Constraining \planete's Period}
@@ -154,6 +140,50 @@ A full transit-timing variation (TTV) analysis is presented in Livingston et al.
 
 
 The Python code used to access the data, process and model the light curve, and reproduce the tables and figures are made publicly available.\footnote{\url{https://github.com/afeinstein20/v1298tau_tess}}
+
+
+
+\begin{deluxetable*}{l r r r r}[!ht]
+\tabletypesize{\footnotesize}
+\tablecaption{\sname light curve fitting results. \label{tab:table}}
+\tablehead{\\
+\hline\
+\textit{Star} & \textit{Value} & \textit{Prior} &  & \\
+\hline\
+$M_\star [M_\odot]$ & & & & \\
+$R_\star [R_\odot]$ & & & & \\
+$u_1$ & & & & \\
+$u_2$ & & & & \\
+$P_{rot}$ [days] & & & & \\
+ln($A$ [ppt]) & & & & \\
+ln($Q_0$) & & & & \\
+$\Delta Q_0$ & & & & \\
+f [ppt] & & & & \\
+mix & & & & \\
+\hline\
+\textit{Planets} & \textit{c} & \textit{d} & \textit{b} & \textit{e}\\
+\hline\
+P [days]               &  &  &  &  \\
+$T_0$ [BJD - 2457000]  &  &  &  &  \\
+Depth [ppt]            &  &  &  &  \\
+$R_p/R_\star$          &  &  &  &  \\
+$a/R_\star$            &  &  &  &  \\
+$b$                    &  &  &  &  \\
+$e$ [$^\circ$]         &  &  &  &  \\
+\hline\
+\textit{Priors} & \textit{c} & \textit{d} & \textit{b} & \textit{e}\\
+\hline\
+log($P$ [days]) & & & & \\
+$T_0$ [BJD - 2457000] & & & & \\
+log($R_p/R_\oplus$) & & & & \\
+$b$ & & & & \\
+$e$ & & & & \\
+$\omega$ [$^\circ$] & & & & 
+}
+\startdata
+\enddata
+%\tablecomments{}
+\end{deluxetable*}
 
 
 \begin{acknowledgments}
