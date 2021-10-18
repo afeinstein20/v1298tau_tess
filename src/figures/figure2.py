@@ -31,8 +31,6 @@ plt.rcParams['text.color'] = COLOR
 plt.rcParams['xtick.color'] = COLOR
 plt.rcParams['ytick.color'] = COLOR
 plt.rcParams['axes.labelcolor'] = COLOR
-#plt.rcParams['axes.spines.top'] = False
-#plt.rcParams['axes.spines.right'] = False
 plt.rcParams['axes.labelcolor'] = COLOR
 plt.rcParams['axes.edgecolor'] = COLOR
 plt.rcParams['figure.facecolor'] = 'none'
@@ -41,9 +39,7 @@ plt.rcParams['legend.facecolor'] = 'none'
 edgecolor = '#05021f'
 k2_ec = '#b8b4b2'
 
-parula = np.load('/Users/arcticfox/parula_colors.npy')[np.linspace(0,160,4,dtype=int)]
 parula = ['#eb9c3b', '#74BB43', '#1A48A0', '#742C64']
-#parula = ['#B3240B', '#74BB43', '#0494EC', '#BC84DC']
 
 planets=['c','d','b','e']
 periods   = np.array([8.249147, 12.401369,  24.141445, 36.695032307689445])    
@@ -52,7 +48,7 @@ t0s       = np.array([4648.53, 4645.4, 4648.1, 4648.8,
 durations = np.array([4.66, 5.59, 6.42, 7.45, 5.59, 4.66, 4.66])/24.0
 
 
-path = '/Users/arcticfox/Documents/v1298tau/tess'
+path = '../data'
 gp_mod = np.load(os.path.join(path, 'gp.npy'), allow_pickle=True).tolist()
 map_soln=np.load(os.path.join(path,'map_soln.npy'), allow_pickle=True).tolist()
 extras = np.load(os.path.join(path,'extras.npy'), allow_pickle=True).tolist()
