@@ -108,7 +108,20 @@ Initially, we used the \texttt{tica} \citep{fausnaugh20} software to download ca
 
 
 \section{Analysis} \label{sec:analysis}
-We simultaneously modeled the transits of \allplanets and the stellar variability using the open-source packages \exoplanet \citep{exoplanet2019, exoplanet2021} and \texttt{PyMC3} \citep{Salvatier16}. Transit timings were originally identified using updated ephemerides from \textit{Spitzer} (Livingston et al. in prep). All other transit parameters (presented in Table~\ref{tab:table}) were initialized using values from \cite{David2019a}. 
+
+We simultaneously modeled the transits of \allplanets and the stellar variability using the open-source packages \exoplanet \citep{exoplanet2019, exoplanet2021} and \texttt{PyMC3} \citep{Salvatier16}. Transit timings were originally identified using updated ephemerides from \textit{Spitzer} (Livingston et al. in prep). All other transit parameters (presented in Table~\ref{tab:table}) were initialized using values from \cite{David2019a}. We assumed quadratic limb darkening law, following the reparameterization described by \cite{kipping13}; this method allows for an efficient and uniform sampling of limb-darkening fits.
+
+% light curve fits
+
+Since the \texttt{tica} FFIs do not provide an error estimate, we fit for flux errors within our GP model. We define the flux error as
+
+\begin{equation}
+    \sigma_y = e^{ln(\sigma_l)} + y^2 e^{2 ln(\sigma_j)}
+\end{equation}
+
+where $y$ is the flux array, and $\sigma_l$  and $\sigma_j$ are used to define the light curve noise and in-transit jitter. $\sigma_l$  and $\sigma_j$ are also used as the first and second terms in our rotation model, which we defined as a stochastically-driven, damped harmonic oscillator, defined by the \texttt{SHOTerm} in \texttt{celerite} \citep{dfm17}.
+
+We took a two-step approach to modeling any background contamination. First, we defined a quadratic trend with respect to time for varying the background flux, where each term was drawn from a normal distribution (listed as `trend term' in Table~\ref{tab:table}). Then, we generated a Vandermonde matrix ($A$) of time. This is a way of introducing a polynomial least-squares regression with respect to time. The final background flux was calculated by taking $bkg = A \cdot trend$.
 
 
 
