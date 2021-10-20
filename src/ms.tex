@@ -1,4 +1,4 @@
-\documentclass[twocolumn]{aastex631}
+\documentclass[modern, twocolumn]{aastex631}
 
 \include{style}
 
@@ -118,16 +118,16 @@ Since the \texttt{tica} FFIs do not provide an error estimate, we fit for flux e
 where $y$ is the flux array, and $\sigma_l$  and $\sigma_j$ are used to define the light curve noise and in-transit jitter. $\sigma_l$  and $\sigma_j$ are also used as the first and second terms in our rotation model, which we defined as a stochastically-driven, damped harmonic oscillator, defined by the \texttt{SHOTerm} in \texttt{celerite} \citep{dfm17}.
 
 We took a two-step approach to modeling any background contamination. First, we defined a quadratic trend with respect to time for varying the background flux, where each term was drawn from a normal distribution (listed as `trend term' in Table~\ref{tab:table}). Then, we generated a Vandermonde matrix ($A$) of time. This is a way of introducing a polynomial least-squares regression with respect to time. The final background flux was calculated by taking $bkg = A \cdot trend$.  
-
 We performed an MCMC sampling fit to each parameter. We ran 4 chains with 500 tuning steps and 3000 draws. We discarded the tuning samples in our final modeling best-fits, presented in Table~\ref{tab:table}. We verified our chains converged via visual inspection and following the diagnostic provided by \cite{Geweke92}.
 
 Our final GP model for stellar variability and planet transits are shown in Figure~\ref{fig:transits}. There is a $\sim 1\%$ flare at \tess\ BJD 4659.18 that we do not fit. Zoom-ins on the individual transits that occur are presented in the bottom two rows of Figure~\ref{fig:transits}. Phase-folded transits for \planetc and \planetd are presented in Figure~\ref{fig:compare}.
 
 \section{Discussion} \label{sec:discussion}
 
+We find transit timing variations (TTVs) for \planetknown to range from \textcolor{red}{n - n days}. A full TTV analysis using \textit{K2}, \textit{Spitzer}, and \tess\ ephemerides is presented in Livingston et al. (in prep). 
 
 
-\subsection{\textit{K2} vs. \tess}
+\subsection{Differences in Measured Radii}
 
 We compare the differences in transit $R_p/R_\star$ between the \textit{K2} and \tess\ data in Figure~\ref{fig:compare}. We plot the best-fit transit model from \textit{K2} in black, which was generated using parameters from \cite{David2019a} and the \texttt{batman} transit-modeling software \citep{Kreidberg15}. The residuals of the \tess\ light curve with our model and the \textit{K2} model are plotted as well. For each planet, the transit $R_p/R_\star$ is shallower in the \tess\ data (Figure~\ref{fig:compare}, bottom panel).
 
@@ -138,7 +138,15 @@ Rather, we favor that the shallower transit depth is due to the difference in ba
 
 \subsection{Constraining \planete's Period}
 
-There was a single transit of \planete in the original \textit{K2} data, which occurred roughly in the middle of the campaign. Since no other transits were detected, this provides a lower period limit of 36~days. 
+There was a single transit of \planete in the original \textit{K2} data, which occurred roughly in the middle of the campaign. Since no other transits were detected, this provides a lower period limit of 36~days. Using the original transit timing from \textit{K2} and this new transit timing from \tess, we can place further constraints on the period. 
+
+We localized a 1-day window around each transit of \planete and ran a GP fit using \texttt{exoplnaet} for the transit parameters, assuming a constant depth between the \textit{K2} and \tess\ observations. We then compute possible periods 
+\begin{equation}
+    P = \frac{1}{n} \left(T_{mid,TESS} - T_{mid, K2}\right)
+\end{equation}
+where $T_{mid}$ are the transit midpoints from \textit{K2} and \tess\ and $n$ is an integer. We then create a light curve using this period, and compute the log-likelihood for the given set of transit parameters. We tested discrete periods ranging from $44- 56$~days. We limit the periods used due to computation time.
+
+Using this method, we constrain the period of \planete to be \textcolor{red}{n}~days. Even at the lower limit, it is unlikely a transit of \planete will occur in the next sector (Sector 44) of \tess\ data for \sname. Independent ground-based monitoring of the system for several days beyond the end of Sector 44 (UT 06 Nov 2021) may be able to observe another transit of the outermost known planet in this system.
 
 
 
@@ -146,11 +154,18 @@ There was a single transit of \planete in the original \textit{K2} data, which o
 
 We present new ephemerides for all four known planets in the \sname system. We have recovered the second transit of \planete; this new transit time in combination from the transit observed with \textit{K2} has allowed us to place tighter constraints on the period of the outermost planet.
 
-A full transit-timing variation (TTV) analysis using \textit{K2}, \textit{Spitzer}, and \tess\ ephemerides is presented in Livingston et al. (in prep).
+We find the transit depths of \allplanets as observed by \tess\ are shallower than previous \textit{K2} observations. We postulate this could be due to ongoing dusty outflows, that make the transit depth appear shallower. However, measuring the transit depths at longer wavelengths could confirm this.
 
 
 The Python code used to access the data, process and model the light curve, and reproduce the tables and figures are made publicly available.\footnote{\url{https://github.com/afeinstein20/v1298tau_tess}}
 
+
+\begin{acknowledgments}
+It is a pleasure to thank the Astronomical Data Group at the Flatiron Institute for helpful discussions. ADF acknowledges support from the National Science Foundation Graduate Research Fellowship Program under Grant No. (DGE-1746045).
+
+This research has made use of NASA's Astrophysics Data System Bibliographic Services. This research made use of Lightkurve, a Python package for \textit{Kepler} and \tess\ data analysis \citep{lightkurve}.
+
+\end{acknowledgments}
 
 \begin{deluxetable*}{l r r r r}[!ht]
 \tabletypesize{\footnotesize}
@@ -160,8 +175,8 @@ The Python code used to access the data, process and model the light curve, and 
 \textit{Star} & \textit{Value} & \textit{Prior} &  & \\
 \hline
 $R_\star [R_\odot]$ & & $\mathcal{G}(1.305, 0.07)$ & & \\
-$u_1$ & & & & \\
-$u_2$ & & & & \\
+$u_1$ & & $\mathcal{U}[0, 1]$ in $q_1$ & & \\
+$u_2$ & & $\mathcal{U}[0, 1]$ in $q_2$ & & \\
 $P_{rot}$ [days] & & $\mathcal{G}($ln$ 2.87, 2)$ & & \\
 ln($A$ [ppt]) & & & & \\
 ln($Q_0$) & & $\mathcal{H}(\sigma=2)$ & & \\
@@ -202,16 +217,6 @@ duration [days] & $\mathcal{G}($ln$ 0.19, 1)$ & $\mathcal{G}($ln$ 0.23, 1)$ & $\
 \tablecomments{Priors are noted for parameters that were directly sampled. The distributions are as follows -- $\mathcal{G}$: Gaussian; $\mathcal{H}$: Half-normal; $\mathcal{U}$: Uniform. $\sigma_\textrm{flux}$ is the standard deviation of the light curve}
 \end{deluxetable*}
 
-\begin{acknowledgments}
-It is a pleasure to thank the Astronomical Data Group at the Flatiron Institute for helpful discussions. ADF acknowledges support from the National Science Foundation Graduate Research Fellowship Program under Grant No. (DGE-1746045).
-
-This research has made use of NASA's Astrophysics Data System Bibliographic Services. This research made use of Lightkurve, a Python package for \textit{Kepler} and \tess\ data analysis \citep{lightkurve}.
-
-\end{acknowledgments}
-
-\include{table}
-
-
 %\vspace{5mm}
 \facilities{TESS, Kepler}
 
@@ -231,10 +236,6 @@ This research has made use of NASA's Astrophysics Data System Bibliographic Serv
 
 \bibliography{main}{}
 \bibliographystyle{aasjournal}
-
-
-
-
 
 
 %% Include this line if you are using the \added, \replaced, \deleted
