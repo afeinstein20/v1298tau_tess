@@ -124,15 +124,12 @@ ax.imshow(dss_data, origin='lower', cmap='Greys',
           vmax=2)
 
 # overlay image 2
-img = ax.imshow(reproj_tesscut, origin='lower', 
-                alpha=0.8, 
-                norm=LogNorm(vmin=1e5, vmax=1e8))
+ax.imshow(dss_data, origin='lower', cmap='Greys',
+          vmin=0, vmax=2)#, alpha=0.5)   
 
-badx, bady = np.where(dss_data<=1)
-test = np.copy(dss_data)
-test[badx,bady] = np.nan
-ax.imshow(test, origin='lower', cmap='Greys',
-          vmin=0, vmax=2)#, alpha=0.5)
+img = ax.imshow(reproj_tesscut, origin='lower', 
+                alpha=0.5, 
+                norm=LogNorm(vmin=1e5, vmax=1e8))
 
 plt.colorbar(img, ax=ax,label=r'Flux (e$^{-1}$ s$^{-1}$)')
 
