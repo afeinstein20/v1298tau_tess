@@ -125,4 +125,5 @@ ylim = ax.get_ylim()
 
 ax.set_xlim(0,750)
 ax.set_ylim(0,800)
+ax.set_rasterized(True)
 plt.savefig('TESSaperture.pdf',dpi=400,bbox_inches='tight', rasterize=True)
