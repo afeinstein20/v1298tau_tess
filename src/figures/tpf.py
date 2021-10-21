@@ -85,7 +85,7 @@ reproj_tesscut, footprint = reproject_interp((data, wcs,),
 plt.rcParams.update({'font.size': 15})
 alpha = 0.6
 ax = plt.subplot(projection=dss_wcs)
-ax.figure.set_size_inches((8,8))
+ax.figure.set_size_inches((10,10))
 
 # show image 1
 ax.imshow(dss_data, origin='lower', cmap='Greys',
