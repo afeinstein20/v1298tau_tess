@@ -13,6 +13,8 @@ import matplotlib.gridspec as gs
 from matplotlib.colors import LogNorm
 from astropy.visualization import simple_norm
 
+COLOR = 'k'
+
 plt.rcParams['font.size'] = 16
 plt.rcParams['text.color'] = COLOR
 plt.rcParams['axes.labelcolor'] = COLOR
@@ -21,8 +23,8 @@ plt.rcParams['ytick.color'] = COLOR
 
 plt.rcParams['xtick.major.width'] = 3
 plt.rcParams['ytick.major.width'] = 3
-plt.rcParams['xtick.major.size']  = 8 #12                                                                                                       
-plt.rcParams['ytick.major.size']  = 8 #12                                                                                                       
+plt.rcParams['xtick.major.size']  = 8
+plt.rcParams['ytick.major.size']  = 8
 
 plt.rcParams['xtick.minor.width'] = 1
 plt.rcParams['ytick.minor.width'] = 1
