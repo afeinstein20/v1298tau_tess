@@ -6,3 +6,5 @@ dependencies:
   - python=3.9
   - pip:
       - matplotlib>=3.3.3
+      - reproject==0.8
+      - astropy==4.3.1
