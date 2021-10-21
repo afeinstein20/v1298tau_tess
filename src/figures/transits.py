@@ -2,8 +2,6 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
-from lightkurve.lightcurve import LightCurve as LC
-from lightkurve.search import search_lightcurve
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 
