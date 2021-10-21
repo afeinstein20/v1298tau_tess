@@ -13,6 +13,33 @@ import matplotlib.gridspec as gs
 from matplotlib.colors import LogNorm
 from astropy.visualization import simple_norm
 
+plt.rcParams['font.size'] = 16
+plt.rcParams['text.color'] = COLOR
+plt.rcParams['axes.labelcolor'] = COLOR
+plt.rcParams['xtick.color'] = COLOR
+plt.rcParams['ytick.color'] = COLOR
+
+plt.rcParams['xtick.major.width'] = 3
+plt.rcParams['ytick.major.width'] = 3
+plt.rcParams['xtick.major.size']  = 8 #12                                                                                                       
+plt.rcParams['ytick.major.size']  = 8 #12                                                                                                       
+
+plt.rcParams['xtick.minor.width'] = 1
+plt.rcParams['ytick.minor.width'] = 1
+plt.rcParams['xtick.minor.size']  = 6
+plt.rcParams['ytick.minor.size']  = 6
+
+plt.rcParams['axes.linewidth'] = 3
+lw = 5
+
+plt.rcParams['text.color'] = COLOR
+plt.rcParams['xtick.color'] = COLOR
+plt.rcParams['ytick.color'] = COLOR
+plt.rcParams['axes.labelcolor'] = COLOR
+plt.rcParams['axes.labelcolor'] = COLOR
+plt.rcParams['axes.edgecolor'] = COLOR
+plt.rcParams['figure.facecolor'] = 'none'
+plt.rcParams['legend.facecolor'] = 'none'
 
 pixelsize = 11
 
@@ -128,4 +155,7 @@ ylim = ax.get_ylim()
 ax.set_xlim(0,750)
 ax.set_ylim(0,800)
 ax.set_rasterized(True)
-plt.savefig('TESSaperture.pdf',dpi=400,bbox_inches='tight', rasterize=True)
+
+plt.savefig('TESSaperture.pdf',dpi=300,
+            bbox_inches='tight', 
+            rasterize=True)
