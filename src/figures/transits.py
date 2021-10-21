@@ -207,4 +207,6 @@ all_axes.append(ax2)
 for ax in all_axes:
     ax.set_rasterized(True)
     
-plt.savefig('lightcurve.pdf', rasterize=True, bbox_inches='tight', dpi=300)
+plt.savefig('transits.pdf', 
+            rasterize=True, 
+            bbox_inches='tight', dpi=300)
