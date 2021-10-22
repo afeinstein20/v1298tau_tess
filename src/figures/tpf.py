@@ -152,6 +152,11 @@ ax.set_ylabel('Declination',fontsize=20)
 xlim = ax.get_xlim()
 ylim = ax.get_ylim()
 
+xax = ax.coords[0]
+yax = ax.coords[1]
+xax.set_ticks(spacing=0.5*u.arcmin)
+yax.set_ticks(spacing=1. * u.arcmin)
+
 ax.set_xlim(0,750)
 ax.set_ylim(0,800)
 ax.set_rasterized(True)
