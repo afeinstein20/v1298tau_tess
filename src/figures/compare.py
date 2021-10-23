@@ -9,7 +9,7 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 import batman
 
 COLOR = 'k'#'#FFFAF1'
-plt.rcParams['font.size'] = 16
+plt.rcParams['font.size'] = 18
 plt.rcParams['text.color'] = COLOR
 plt.rcParams['axes.labelcolor'] = COLOR
 plt.rcParams['xtick.color'] = COLOR
@@ -37,6 +37,7 @@ plt.rcParams['axes.edgecolor'] = COLOR
 plt.rcParams['figure.facecolor'] = 'none'
 plt.rcParams['legend.facecolor'] = 'none'
 
+bigger = 22
 
 def setup_batman(time, args, mission='K2', index=0):
     params = batman.TransitParams()
@@ -115,7 +116,7 @@ last = fig.add_subplot(gs[2, :])
 k2_ec = '#8a8988'
 
 for i in range(4):
-    axes[i].set_title('V1298 Tau {}'.format(planets[i]))
+    axes[i].set_title('V1298 Tau {}'.format(planets[i]), fontsize=bigger)
     
     divider = make_axes_locatable(axes[i])
     rax = divider.append_axes("bottom", size='30%', pad=0)
@@ -173,14 +174,14 @@ for i in range(4):
     rax.set_ylim(-3,3)
     
     if i == 0:
-        axes[i].legend(bbox_to_anchor=(0.8, 1.1, 0.6, .102), loc='lower left',
-                       ncol=2, mode="expand", borderaxespad=0.)
+        axes[i].legend(bbox_to_anchor=(0.7, 1.15, 0.7, .102), loc='lower left',
+                       ncol=2, mode="expand", borderaxespad=0., fontsize=bigger)
         
     if i == 0 or i == 2:
         axes[i].set_ylabel('De-trended Flux [ppt]')
         rax.set_ylabel('Residuals')
     if i >= 2:
-        rax.set_xlabel('Time from Mid-Transit [days]')
+        rax.set_xlabel('Time from Mid-Transit [days]', fontsize=bigger)
     
     
     axes[i].set_xlim(-1,1)
@@ -196,8 +197,8 @@ for i, rp in enumerate([0.0381, 0.0436, 0.07, 0.0611]):
 last.plot(np.linspace(0,1,10), np.linspace(0,1,10), 'k')
 last.set_xlim(0.032, 0.075)
 last.set_ylim(0.032, 0.075)
-last.set_xlabel('K2 $R_p/R_{star}$')
-last.set_ylabel('TESS $R_p/R_{star}$')
+last.set_xlabel('K2 $R_p/R_{star}$', fontsize=bigger)
+last.set_ylabel('TESS $R_p/R_{star}$', fontsize=bigger)
     
 plt.subplots_adjust(hspace=0.3)
 plt.savefig('folded_compare.pdf', rasterize=True, dpi=250,
