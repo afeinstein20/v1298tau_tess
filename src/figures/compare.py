@@ -37,7 +37,7 @@ plt.rcParams['axes.edgecolor'] = COLOR
 plt.rcParams['figure.facecolor'] = 'none'
 plt.rcParams['legend.facecolor'] = 'none'
 
-bigger = 22
+bigger = 24
 
 def setup_batman(time, args, mission='K2', index=0):
     params = batman.TransitParams()
