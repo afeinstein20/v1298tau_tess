@@ -208,5 +208,5 @@ last.set_xlabel('K2 $R_p/R_{star}$', fontsize=bigger)
 last.set_ylabel('TESS $R_p/R_{star}$', fontsize=bigger)
     
 plt.subplots_adjust(hspace=0.3)
-plt.savefig('paper/folded_compare.pdf', rasterize=True, dpi=250,
+plt.savefig('folded_compare.pdf', rasterize=True, dpi=250,
             bbox_inches='tight')
