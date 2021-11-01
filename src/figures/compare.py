@@ -98,13 +98,15 @@ e = [2263.6229, 60, 0.0611, 51, 89.4, 0, 91]
 
 batman_params=[c,d,b,e]
 
+ror = np.load('../../data/results.npy')
 
 ## SETS UP THE FIGURE
-
 fig = plt.figure(constrained_layout=True, figsize=(12,18))
 fig.set_facecolor('w')
 gs = fig.add_gridspec(3,2, height_ratios=[2,2,1.5])
 
+plt.rcParams['font.size'] = 18
+bigger=22
 
 fig.set_facecolor('w')
 axes = [fig.add_subplot(gs[0, 0]),
@@ -128,12 +130,12 @@ for i in range(4):
     lk = LC(time=time[q], 
             flux=flux[q]-model[q],
             flux_err=flux_err[q]).fold(epoch_time=map_soln['t0'][i], 
-                                              period=map_soln['period'][i])
+                                       period=map_soln['period'][i])
     
     md = LC(time=time[q], 
-                flux=planet_models[:,i][q],#-tab['star_model'][q],
+                flux=planet_models[:,i][q],
                 flux_err=flux_err[q]).fold(epoch_time=map_soln['t0'][i], 
-                                                  period=map_soln['period'][i])
+                                           period=map_soln['period'][i])
     
     axes[i].errorbar(lk.time.value,
                      lk.flux.value, yerr=lk.flux_err.value,
@@ -143,16 +145,13 @@ for i in range(4):
     axes[i].plot(md.time.value,
                  md.flux.value, c=parula[i],
                  zorder=3, lw=lw)
-    
-    #mask_inds = np.delete(np.arange(0,4,1), i)
-    #q = np.nansum(planet_models_k2[:,mask_inds], axis=1) >= -0.1
+
     
     phase = np.linspace(-40,40,len(lk.time.value))
     k2_model = setup_batman(phase, batman_params[i], mission='phase')
     interp = interp1d(phase, k2_model)
     lkk2 = LC(time=lk.time.value,
               flux=interp(lk.time.value))
-              #.fold(epoch_time=batman_params[i][0],  period=batman_params[i][1])
     
     axes[i].plot(lkk2.time.value,
                  lkk2.flux.value,
@@ -188,18 +187,26 @@ for i in range(4):
     rax.set_xlim(-1,1)
     axes[i].set_ylim(-7.5,3)
     axes[i].set_rasterized(True)
-    
+
+
 k2errs = [0.0017, 0.0022, 0.0023, 0.004]
-for i, rp in enumerate([0.0381, 0.0436, 0.07, 0.0611]):
-    last.errorbar(rp, map_soln['ror_tess'][i], 
+rprs = [0.0381, 0.0436, 0.0700, 0.0611]
+lims = [0.032, 0.075]
+
+for i, rp in enumerate(rprs):
+    last.errorbar(rp, 
+                  np.nanmedian(ror[i]),
                   xerr=k2errs[i],
+                  yerr=np.nanstd(ror[i]),
                   marker='o', color=parula[i], ms=10)
-last.plot(np.linspace(0,1,10), np.linspace(0,1,10), 'k')
-last.set_xlim(0.032, 0.075)
-last.set_ylim(0.032, 0.075)
+last.plot(np.linspace(0,20,10), np.linspace(0,20,10), 'k')
+
+last.set_xlim(lims)
+last.set_ylim(lims)
+
 last.set_xlabel('K2 $R_p/R_{star}$', fontsize=bigger)
 last.set_ylabel('TESS $R_p/R_{star}$', fontsize=bigger)
     
 plt.subplots_adjust(hspace=0.3)
-plt.savefig('folded_compare.pdf', rasterize=True, dpi=250,
+plt.savefig('paper/folded_compare.pdf', rasterize=True, dpi=250,
             bbox_inches='tight')
