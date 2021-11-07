@@ -1,4 +1,4 @@
-\documentclass[twocolumn]{aastex631}
+\documentclass[linenumbers,modern,twocolumn]{aastex631}
 
 \include{style}
 
@@ -7,6 +7,7 @@
 
 \shorttitle{V1298 Tau with \tess}
 \shortauthors{Feinstein et al.}
+
 
 \begin{document}
 
@@ -42,7 +43,7 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 
-\sname is a young (20--30~Myr) solar analogue hosting four transiting exoplanets with sizes between $0.5 - 0.9 R_J$. Given the system's youth,  it provides a unique opportunity to understand the evolution of planetary radii at different separations in the same stellar environment. \sname was originally observed 6 years ago during \textit{K2} Campaign 4. Now, \sname has been re-observed during the extended mission of NASA's Transiting Exoplanet Survey Satellite (\tess). Here, we present new photometric observations of \sname from the 10-minute \tess\ Full-Frame Images. We use the \tess\ data to update the ephemerides for \allplanets as well as compare newly observed radii to those derived from the \textit{K2} light curve, finding shallower transits for \planetknown in the redder \tess\ bandpass at the $1-2\sigma$ level. While the shallower transits observed by \tess\ could be due to high-altitude hazes in the extended atmospheres of these young planets, we suspect the difference is due to starspot-crossing events or contamination from nearby faint stars on the same pixels as \sname. We additionally catch a transit of \planete, which transited only once during the \textit{K2} observations, and present a new method for deriving the marginalized posterior probability of a planet's period from two transits observed years apart. We find the highest probability period for \planete to be in a near 2:1 mean motion resonance with \planetb which, if confirmed, could make \allplanets a 4 planet resonant chain. Additionally, we find the transit depth for \planete to be $3\sigma$ deeper than what was measured from \textit{K2}. \sname is the target of several ongoing and future observations, including with the James Webb Space Telescope. These updated ephemerides will be crucial for accurately recovering transit events and understanding any future Doppler tomographic or transmission spectroscopy signals.
+\sname is a young (20--30~Myr) solar analogue hosting four transiting exoplanets with sizes between $0.5 - 0.9 R_J$. Given the system's youth,  it provides a unique opportunity to understand the evolution of planetary radii at different separations in the same stellar environment. \sname was originally observed 6 years ago during \textit{K2} Campaign 4. Now, \sname has been re-observed during the extended mission of NASA's Transiting Exoplanet Survey Satellite (\tess). Here, we present new photometric observations of \sname from the 10-minute \tess\ Full-Frame Images. We use the \tess\ data to update the ephemerides for \allplanets as well as compare newly observed radii to those derived from the \textit{K2} light curve, finding shallower transits for \planetknown in the redder \tess\ bandpass at the $1-2\sigma$ level. We suspect the difference in radii is due to starspot-crossing events or contamination from nearby faint stars on the same pixels as \sname. We additionally catch a second transit of \planete and present a new method for deriving the marginalized posterior probability of a planet's period from two transits observed years apart. We find the highest probability period for \planete to be in a near 2:1 mean motion resonance with \planetb which, if confirmed, could make \allplanets a 4 planet resonant chain. \sname is the target of several ongoing and future observations. These updated ephemerides will be crucial for accurately recovering transit events and understanding any future Doppler tomographic or transmission spectroscopy signals.
 
 \end{abstract}
 
@@ -59,11 +60,11 @@ NASA's Transiting Exoplanet Survey Satellite \citep[\tess;][]{Ricker2015} has ma
 
 The \sname planetary system is one particularly valuable benchmark for understanding the size evolution of exoplanets. \sname is a pre-main sequence, approximately solar-mass star that was observed in 2015 by NASA's \textit{K2} mission \citep{Howell2014}. Analysis of the \textit{K2} data revealed the presence of four transiting planets, all with sizes between that of Neptune and Jupiter \citep{David2019a, David2019b}. There are no other known examples of exoplanetary systems with so many planets larger than Neptune interior to 0.5~au, despite the high completeness of the \textit{Kepler} survey to large ($>5$~\rearth), close-in planets. This observation raises the possibility of a causal connection between the extreme youth of \sname and the uncommonly large sizes of its planets.  
 
-The youth of \sname (also K2-309 and [WKS96] 4) was initially established on the basis of its strong X-ray emission \citep{Wichmann1996}, high photospheric lithium abundance \citep{Wichmann2000}, and proper motion measurements of pre-main sequence stars in Taurus-Auriga \citep{frink1997}. An additional recent blind search for co-moving stars using Gaia DR1 astrometry data found \sname was co-moving with 8 other stars \citep[Group 29 in][]{Oh2017}. A kinematic study of the Taurus star-forming region \citet{Luhman2018} used Gaia DR2 data to extended the membership of this group and derived an age of $\sim$~40~Myr. However, more recent analyses based on Gaia EDR3 astrometry suggests \sname may belong to either the D2 or D3 subgroups of Taurus, both of which have estimated ages $\lesssim$10~Myr \citep{gaidos21, Krolikowski2021}. Other studies focused specifically on the \sname system have estimated its age to be 23$\pm$4~Myr from comparison with empirical and theoretical isochrones \citep{David2019b}, or 28$\pm$4~Myr from isochrone fitting to the \citet{Luhman2018} Group 29 membership list given Gaia EDR3 data \citep{johnson21}. While the precise age of \sname remains uncertain, most estimates fall in the 10--40~Myr range and we adopt $t \approx$~20--30~Myr.
+The youth of \sname was initially established on the basis of its strong X-ray emission \citep{Wichmann1996}, high photospheric lithium abundance \citep{Wichmann2000}, and proper motion measurements \citep{frink1997}. An additional recent blind search for co-moving stars using Gaia DR1 astrometry data found \sname was co-moving with 8 other stars \citep[Group 29 in][]{Oh2017}. A kinematic study of the Taurus star-forming region \citet{Luhman2018} used Gaia DR2 data to extended the membership of this group and derived an age of $\sim$~40~Myr. However, more recent analyses based on Gaia EDR3 astrometry suggests \sname may belong to either the D2 or D3 subgroups of Taurus, both of which have estimated ages $\lesssim$10~Myr \citep{gaidos21, Krolikowski2021}. Other studies focused specifically on the \sname system have estimated its age to be 23$\pm$4~Myr from comparison with empirical and theoretical isochrones \citep{David2019b}, or 28$\pm$4~Myr from isochrone fitting to the \citet{Luhman2018} Group 29 membership list given Gaia EDR3 data \citep{johnson21}. While the precise age of \sname remains uncertain, most estimates fall in the 10--40~Myr range and we adopt $t \approx$~20--30~Myr.
 
 Given the system's youth and potential to reveal information about the initial conditions of close-in planetary systems \citep[e.g.][]{Owen2020,Poppenhaeger2021}, \sname has been the target for extensive follow-up observations. These include efforts to constrain planet masses with radial velocities \citep{Beichman2019}, measure the spin-orbit alignments of planet c \citep{Feinstein21} and planet b \citep{johnson21, gaidos21}, measure or constrain atmospheric mass-loss rates for the innermost planets \citep{Schlawin21, Vissapragada21}, and an approved program to study the planetary atmospheres using the James Webb Space Telescope \citep[JWST;][]{Desert2021}.
 
-Here we report on newly acquired \tess\ observations of \sname which help to refine the orbital ephemerides of the transiting planets and enable comparison of the planet sizes inferred from two different telescopes with different bandpasses (\tess\ and \textit{Kepler}). The letter is laid out as follows. We describe the observations and light curve extraction in Section~\ref{sec:observations}. In Section~\ref{sec:analysis}, we present our transit and stellar variability modeling. We additionally present a novel method for computing the marginalized posterior probability of a transiting planet's period from two transits observed with a large gap between them. We provide transit mid-point dates and times for \planete for ground-based follow-up in the United States. In Section~\ref{sec:radii}, we discuss the differences in measured transit parameters between \textit{K2} and \tess\ data and speculate on the causes for different measured radii. We conclude in Section~\ref{sec:conclusions}.
+Here we report on newly acquired \tess\ observations of \sname which help to refine the orbital ephemerides of the transiting planets and enable comparison of the planet sizes inferred from two different telescopes with different bandpasses (\tess\ and \textit{Kepler}). The letter is laid out as follows. We describe the observations and light curve extraction in Section~\ref{sec:observations}. In Section~\ref{sec:analysis}, we present our light curve modeling and method for computing the marginalized posterior probability of a transiting planet's period from two transits observed with a large time gap. In Section~\ref{sec:radii}, we discuss the differences in measured transit parameters between \textit{K2} and \tess\ data and speculate on the causes for different measured radii. We conclude in Section~\ref{sec:conclusions}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[t!]
@@ -84,7 +85,7 @@ We created light curves from the \texttt{tica}-processed FFIs by modeling the po
 \begin{figure*}[hbtp]
 \begin{center}
 \includegraphics[width=\textwidth,trim={0.25cm 0 0 0}]{figures/transits.pdf}
-\caption{\sname extracted light curve from the \texttt{tica}-processed full-frame images for all of Sector 43 and the first orbit of Sector 44, with transits of \allplanets highlighted by color. Each subplot contains the raw, normalized \tess\ flux (top) and the GP model removed flux (de-trended flux; bottom). Top row: extracted light curve with over plotted with our best-fit GP model for stellar variability (black). Bottom three rows: zoomed-in regions around the transits present in the \tess\ data. The GP best-fit model is over-plotted on the raw, normalized flux. The best-fit transit models are over-plotted on the de-trended flux. For overlapping transits (sub-panel ``Planets b, c, \& e"), the sum of the transits is blotted in black.} \label{fig:transits}
+\caption{\sname extracted light curve from the \texttt{tica}-processed full-frame images for all of Sector 43 and the first orbit of Sector 44, with transits of \allplanets highlighted by color. Each subplot contains the raw, normalized \tess\ flux (top) and the GP model removed flux (de-trended flux; bottom). Top row: extracted light curve with over plotted with our best-fit GP model for stellar variability (black). Bottom three rows: zoomed-in regions around the transits present in the \tess\ data. The GP best-fit model is over-plotted on the raw, normalized flux. The best-fit transit models are over-plotted on the de-trended flux. For overlapping transits (sub-panel ``Planets b, c, \& e''), the sum of the transits is blotted in black.} \label{fig:transits}
 \end{center}
 \end{figure*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -104,17 +105,17 @@ Since the \texttt{tica} FFIs do not provide an error estimate, we fit for flux e
 
 where $y$ is the normalized flux array about zero, and $\sigma_l$  and $\sigma_j$ are used to define the light curve noise and in-transit jitter, which is designed to capture the added noise produced by starspot crossing events. $\sigma_l$  and $\sigma_j$ are also used as the first and second terms in our rotation model, which we defined as a stochastically-driven, damped harmonic oscillator, defined by the \texttt{SHOTerm} in \texttt{celerite2} \citep{dfm17}.
 
-We took a two-step approach to modeling any background contamination. First, we defined a quadratic trend with respect to time for varying the background flux, where each polynomial coefficient was drawn from a normal distribution. Then, we generated a Vandermonde matrix ($A$) of time. This is a way of introducing a polynomial least-squares regression with respect to time. The final background flux was calculated by taking $bkg = A \cdot trend$.  
+We modeled the background within out GP. We defined a quadratic trend with respect to time for varying the background flux, where each polynomial coefficient was drawn from a normal distribution. Then, we generated a Vandermonde matrix ($A$) of time. This is a way of introducing a polynomial least-squares regression with respect to time. The final background flux was calculated by taking $bkg = A \cdot trend$.  
 
 We performed an MCMC sampling fit to each parameter.\footnote{A Jupyter notebook detailing our model can be found \href{https://github.com/afeinstein20/v1298tau\_tess/blob/main/notebooks/TESS\_V1298Tau.ipynb}{here}.} We ran 3 chains with 500 tuning steps and 5000 draws. We discarded the tuning samples from the posterior chains before calculating our best-fit parameters. Our results are presented in Table~\ref{tab:table}, along with our selected priors for each parameter we fit. We verified our chains converged via visual inspection and following the diagnostic provided by \cite{Geweke92}.
 
-Our final GP model for stellar variability and planet transits are shown in Figure~\ref{fig:transits}. There is a $\sim 1\%$ flare at \tess\ BKJD $\approx$ 4659.18 that we do not fit. We present zoom-ins on the individual transits in the \tess\ light curve. Per each panel, we present the GP model-removed flux (de-trended flux) and the best-fit transit models for each observed transit.
+We present our final GP model for stellar variability, planet transits, and best-fit transit models in Figure~\ref{fig:transits}. There is a $\sim 1\%$ flare at \tess\ BKJD $\approx$ 4659.18 that we do not fit.
 
 
 \subsection{Constraining \planete's Period}
 \sname (EPIC~210818897) was observed during Campaign 4 of the \textit{K2} mission. There was a single transit of \planete in the original \textit{K2} data, which occurred roughly in the middle of the campaign. Since no other transits were detected, this provides a lower period limit of 36~days. Using the original transit timing from \textit{K2} and this new transit timing from \tess, we developed a new method for constraining the period of \planete. For this analysis, we used the \texttt{EVEREST 2.0} \citep{luger18} version of the \textit{K2} light curve. 
 
-Determining the period of a planet from two transits with a significant time gap between surveys has previously been constrained by fitting for orbital periods using MCMC sampling, phase-folding all available transits on the derived transit times and periods, and computing a reduced-$\chi^2$ fit to a flat line \citep{becker19}. Orbital periods that resulted in a likelihood $> 10^4$ are then ruled out. In our new method, we are fitting for discrete periods at each step of the MCMC sampler, rather than post-processing from our posterior. We take the following approach:
+Determining the period of a planet from two transits with a significant time gap between surveys has previously been constrained by fitting for orbital periods using MCMC sampling, phase-folding all available transits on the derived transit times and periods, and computing a reduced-$\chi^2$ fit to a flat line \citep{becker19}. Orbital periods that resulted in a likelihood $> 10^4$ are then ruled out. In our new method, we are fitting for discrete periods at each step of the MCMC sampler, rather than post-processing from our posterior.
 
 First, we de-trended a localized 1-day region around the transit midpoint of \planete in the \textit{K2} and \tess\ light curves, assuming a constant transit depth and allowing the other transit parameters, $\theta$ to vary. Then, we fit a discrete period model, allowing all other transit parameters to vary. We set the GP model to sample over discrete periods ranging from $38 - 56$~days. We fit for $\theta$ assuming a constant transit depth between the \textit{K2} and \tess\ observations. We assumed there is no correlation between the other transit parameters and the period we are fitting for. For each step in our MCMC fit, we compute all possible periods
 
@@ -136,7 +137,7 @@ where $X$ is the \tess\ light curve and $n$ is the period being tested. We addit
 
 The summation of all log likelihoods is used to compute the posterior likelihood for each sampled value of $q$.\footnote{A Jupyter notebook detailing our model for constraining the period for \planete can be found \href{https://github.com/afeinstein20/v1298tau\_tess/blob/main/notebooks/V1298Tau\_e.ipynb}{here}.}
 
-We ran 5 chains with 500 tuning steps and 5000 draws. Similarly to the transit fits, we discarded the tuning steps before our analysis. Our results are presented in Figure~\ref{fig:period_e}, where we plot the median period for each tested harmonic against the posterior probability of each harmonic.
+We ran 5 chains with 500 tuning steps and 5000 draws. We discarded the tuning steps before our analysis. Our results are presented in Figure~\ref{fig:period_e}, where we plot the median period for each tested harmonic against the posterior probability of each harmonic.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
@@ -147,9 +148,9 @@ We ran 5 chains with 500 tuning steps and 5000 draws. Similarly to the transit f
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Using this method, we find the most likely period of \planete to be 50.748~days. We computed a $\chi^2$-fit to a Gaussian distribution using \texttt{lmfit} \citep{lmfit} and find the period to be $50.74 \pm 5.88$~days. Even at the lower limit, it is unlikely a transit of \planete will occur in the next orbit of Sector 44. This derived period estimate suggests that \planete is in a near 2:1 mean motion resonance with \planetb. If the period of \planete is confirmed to be within the presented range, this could indicate that \allplanets are in nearly 4 planet resonant chain.
+We find the most likely period of \planete to be 50.748~days. We computed a $\chi^2$-fit to a Gaussian distribution using \texttt{lmfit} \citep{lmfit} and find the period to be $50.74 \pm 5.88$~days. Even at the lower limit, it is unlikely a transit of \planete will occur in the 2\textsuperscript{nd} orbit of Sector 44. This derived period estimate suggests that \planete is in a near 2:1 mean motion resonance with \planetb. If the period of \planete is confirmed to be within the presented range, this could indicate that \allplanets are in nearly 4 planet resonant chain.
 
-Independent ground-based monitoring of the system for several days beyond the end of Sector 44 (UT 06 Nov 2021) may be able to observe another transit of the outermost known planet in this system. Using the Transit Service Query Form on the NASA Exoplanet Archive \citep{Akeson2013}, we provide several transit midpoint events observable in Mountain Time [UTC-7], Pacific Time [UTC-8], and Hawaiian Time [UTC-10], given the top 5 most-likely periods for \planete at the end of Table~\ref{tab:table}.
+Independent ground-based monitoring of the system may be able to observe another transit of the outermost known planet in this system. Using the Transit Service Query Form on the NASA Exoplanet Archive \citep{Akeson2013}, we provide several potential transit midpoint events, given the top 5 most-likely periods for \planete, at the end of Table~\ref{tab:table}.
 
 \section{Differences in Measured Radii} \label{sec:radii}
 
@@ -158,43 +159,54 @@ We compare the differences in transit $R_p/R_\star$ between the \textit{K2} and 
 
 \subsection{Radii of \planetknown}
 
-%Because \sname is young, it is expected that \allplanets have extended atmospheres due to high levels of stellar irradiation \citep{OwenWu2017} and are slowly evolving as atmospheric mass is lost. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}[!htb]
+\begin{center}
+\includegraphics[width=\textwidth,trim={0.25cm 0 0 0}]{static/combined_together.pdf}
+\caption{Left: Phase-folded \tess\ data (gray) with the new best-fit model (color) compared to the original \textit{K2} data (black). The residuals between the \tess\ data and each fit are shown underneath. Top right: A comparison of measured $R_p/R_\star$ are presented with a 1-to-1 line plotted in black for reference. The transit depths for \planetknown are shallower in the new \tess\ data, while the transit depth for \planete is deeper. Bottom right: The change in $R_p/R_\star$ as a function of pixel for \planetb (top) and \planete (bottom) overlaid with a sky image of \sname taken with the Digitized Sky Survey (DSS) r-band. We speculate the variation in transit depths could be due to contamination from nearby bright stars or starspot crossing events.} \label{fig:compare}
+\end{center}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 A shallower transit depth at redder wavelengths is supported by the dusty outflow model presented in \citep{wang19}, while transits in the optical probe lower atmospheric pressures, resulting in larger transit depths \citep{gao20}. Therefore, the difference in transit depths could be due to the difference in bandpass wavelength coverage between \textit{Kepler} \citep[400-900~nm;][]{Howell2014} and \tess\ \citep[600-1000~nm][]{Ricker2015}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iffalse
 \begin{figure}[!b]
 \begin{center}
 \includegraphics[width=0.465\textwidth,trim={0.25cm 0 0 0}]{figures/folded_compare.pdf}
 \caption{Phase-folded \tess\ data (gray) with the new best-fit model (color) compared to the original \textit{K2} data (black). The residuals between the \tess\ data and each fit are shown underneath. A comparison of measured $R_p/R_\star$ are presented at the bottom, with a 1-to-1 line plotted in black for reference. The transit depths for \planetknown are shallower in the new \tess\ data, while the transit depth for \planete is deeper. We speculate the variation in transit depths could be due to starspot crossing events.} \label{fig:compare}
 \end{center}
 \end{figure}
+\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The ability of a planet to retain hazes/transition hazes is negatively correlated with its equilibrium temperature, $T_{eq}$, internal temperature $T_{int}$, and positively correlated with mass, $M_{core}$. \allplanets have calculated $T_{eq} < 1000$\,K, assuming an albedo = 0 \citep{David2019a}. Young planets are believed to have high $T_{int}$ due to ongoing gravitational contraction \citep{gu04}. The combination of these two parameters make these planets more likely to host extended high-altitude hazes in their atmospheres, while outflow winds lead to the formation of transition hazes \citep{gao20}. 
 
 However, it is more likely we are seeing either contamination/dilution from another nearby star or the presence of starspots. As highlighted in Figure~\ref{fig:tpf}, there is a bright (\tess\ magnitude $<$ 14) just next to \sname. Since we did not include this source in our light curve PSF-modeling, it is possible there is some light from this source in our data, therefore making the transits of \planetknown appear $\sim 10$\% shallower in our \tess\ data than the original \textit{K2} measurements. The \tess\ Input Catalog \citep{stassun18} lists a contamination value of 0.315 for \sname, which could sufficiently produce the decrease in transit depths presented here. 
 
-We check for signs of dilution by creating light curves for individual pixels around \sname and measure the transit depths of \planetb and \planete (Figure~\ref{fig:dilution}). We localized a 1-day window around each transit and computed the a $\chi^2$ fit using a transit model computed with \texttt{batman} \citep{Kreidberg15} and an underlying 2\textsuperscript{nd} order polynomial. We find the transit depths to decrease falling off of the pixels centered on \sname. While fitting the \tess\ PSF with a 2D Gaussian function is a good approach, it is not the perfect model. It is possible that we are including dilution from these other nearby bright ($T_\textrm{mag}< 14$) targets. This is especially true for TIC~15756226, which is the closest (separation $= 49.15\arcsec$) star with $T_\textrm{mag} = 13.09$. A more carefully constructed PSF to these \tess\ pixels would potentially yield a less diluted light curve.
+We check for signs of dilution by creating light curves for individual pixels around \sname and measure the transit depths of \planetb and \planete (Figure~\ref{fig:compare}). We localized a 1-day window around each transit and computed the a $\chi^2$ fit using a transit model computed with \texttt{batman} \citep{Kreidberg15} and an underlying 2\textsuperscript{nd} order polynomial. We find the transit depths to decrease falling off of the pixels centered on \sname. While fitting the \tess\ PSF with a 2D Gaussian function is a reasonable approximation, it is not the perfect model. It is possible that this light curve is diluted from nearby stars, including TIC~15756226, which is the closest (separation $= 49.15\arcsec$) star with $T_\textrm{mag} = 13.09$.
 
-A change in transit depth could additionally be due to starspots, either from nearby source or from the surface of \sname. In the context of starspots on \sname, both starspot/active region crossing events, where the planets directly transit over these inhomogeneities, or asymmetric starspots/active region distributions located off the transit chord could lead to differences in transit depths and shapes. In the case of starspot crossing events, we would expect to see added variability to the transit shape. Assuming we are not underestimating our error bars, this is readily seen in the transit of \planetb, both in the \tess\ and \textit{K2} data (Figure~\ref{fig:compare}). 
+A change in transit depth could additionally be due to starspots, either from a nearby source or from the surface of \sname. In the context of starspots on \sname, both starspot/active region crossing events, where the planets directly transit over these inhomogeneities, or asymmetric starspots/active region distributions located off the transit chord could lead to differences in transit depths and shapes. In the case of starspot crossing events, we would expect to see added variability to the transit shape. Assuming we are not underestimating our error bars, this is readily seen in the transit of \planetb, both in the \tess\ and \textit{K2} data (Figure~\ref{fig:compare}). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iffalse
 \begin{figure}[!t]
 \begin{center}
 \includegraphics[width=0.465\textwidth,trim={0.25cm 0 0 0}]{static/dilution.pdf}
 \caption{The change in $R_p/R_\star$ as a function of pixel for \planetb (top) and \planete (bottom) overlaid with a sky image of \sname taken with the Digitized Sky Survey (DSS) r-band. \sname is highlighted by the white circle; nearby sources with \tess\ magnitudes $T_\textrm{mag} < 14$ are marked with blue x's.} \label{fig:dilution}
 \end{center}
 \end{figure}
+\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Radius of \planete}
 
-Contrary to \planetknown, we measure a transit radius that is $\sim 3\sigma$ larger in the new \tess\ data than what was found in the original \textit{K2} data.
-
-The difference in radii could be consistent with a large scale height, low mean-molecular weight atmosphere around \planete \citep{deMooij12}. It is also possible the atmosphere of \planete is dominated by species with stronger absorption features at longer wavelengths, such as CO, H$_2$O, and CH$_4$ \citep{carter09}. Such measurements could be possible using a variety of ground-based instruments \citep[e.g.][]{line21} and would provide insight into the planet formation process and location of the \planete. However, future characterization of this atmosphere requires an exact period in order to plan additional ground-based follow-up.
+Contrary to \planetknown, we measure a transit radius that is $\sim 3\sigma$ larger in the new \tess\ data than what was found in the original \textit{K2} data \citep{David2019a}. The difference in radii could be consistent with a large scale height, low mean-molecular weight atmosphere around \planete \citep{deMooij12}. It is also possible the atmosphere of \planete is dominated by species with stronger absorption features at longer wavelengths, such as CO, H$_2$O, and CH$_4$ \citep{carter09}. %Such measurements could be possible using a variety of ground-based instruments \citep[e.g.][]{line21} and would provide insight into the planet formation process and location of the \planete. However, future characterization of this atmosphere requires an exact period in order to plan additional ground-based follow-up.
 
 We find it is more likely that the original single transit of \planete was filled-in via spot-crossing events, making it appear shallower in the \textit{K2} observations. Young stars are known to have very high spot coverage, anywhere from 30-80\% \citep[][]{grankin99, gully17, feinstein20}. It is therefore likely the surface of \sname is dominated by stellar inhomogeneities. This hypothesis is further strengthened by comparing the transit shape between the two data sets (Figure~\ref{fig:compare}). The center of the \textit{K2} transit is deeper than the edges and is consistent with the most recently observed transit depth. The lower contrast in starspot signals at longer wavelengths could potentially explain why the transit depth is consistent deeper in the \tess\ observations. Additionally, there is noise in-transit in the \tess\ data that could potentially be more starspot crossing events.
 
-\cite{morris17} demonstrated the ability to detect starspot crossing events in short-cadence \textit{Kepler} data. The original \textit{K2} observations for \sname are at the long-cadence observing mode ($\sim 30$-minutes) and may not have the temporal resolution needed to unambiguously demonstrate starspot crossings. Future \tess\ 20-second and 2-minute data may yield insight into if there is evidence of starspot crossing events. Our transit of \planete from the FFIs shows some structure, particularly with a slight increase in transit depth around $t \approx 4648.8$~BKJD. At the 10-minute cadence, it is hard to rule out noise as the source of this structure. However if there is such evidence of starspot crossings in the higher-cadence \tess\ observations, it would be interesting if any of the events dilutes the transit enough to result in a similar transit depth to that which was seen in \textit{K2}. 
+%\cite{morris17} demonstrated the ability to detect starspot crossing events in short-cadence \textit{Kepler} data. The original \textit{K2} observations for \sname are at the long-cadence observing mode ($\sim 30$-minutes) and may not have the temporal resolution needed to unambiguously demonstrate starspot crossings. 
+Future \tess\ 20-second and 2-minute data may have the temporal resolution needed to yield insight into if there is evidence of starspot crossing events. Our transit of \planete from the FFIs shows some structure. At the 10-minute cadence, it is hard to rule out noise as the source of this structure. However if there is such evidence of starspot crossings in the higher-cadence \tess\ observations, it would be interesting if any of the events dilutes the transit enough to result in a similar transit depth to that which was seen in \textit{K2}. 
 
 \section{Conclusions} \label{sec:conclusions}
 
@@ -204,7 +216,7 @@ We find the transit depths of \planetknown as observed by \tess\ are shallower t
 
 The youth of these planets could additionally favor hosting haze-dominated atmospheres. However, without mass estimates for \allplanets, it is difficult to determine if this is the cause of the different transit depths measured between the \textit{K2} data and our presented work. Radial velocity mass measurements are challenging for young planets due to underlying stellar activity. A more promising approach to measuring the masses would be through TTVs \citep{agol18}. A full TTV analysis \textit{K2}, \textit{Spitzer}, and \tess\ transit photometry is presented in Livingston et al. (in prep). Additional transits at longer wavelengths or simultaneous multi-band photometry or spectroscopy could corroborate the potential of constraining the properties of these young atmospheres.
 
-The Python code used to access the data, process and model the light curve, and reproduce the tables and figures are made publicly available.\footnote{\url{https://github.com/afeinstein20/v1298tau_tess}}
+%The Python code used to access the data, process and model the light curve, and reproduce the tables and figures are made publicly available.\footnote{\url{https://github.com/afeinstein20/v1298tau_tess}}
 
 \begin{acknowledgments}
 We thank Rodrigo Luger for developing \texttt{showyourwork!} \citep{luger21} and helping us debug this letter, and we thank Chas Beichman and Sarah Blunt for helpful comments on our \tess\ proposal (DDT 036). ADF acknowledges support from the National Science Foundation Graduate Research Fellowship Program under Grant No. (DGE-1746045).
@@ -214,7 +226,7 @@ This research has made use of NASA's Astrophysics Data System Bibliographic Serv
 \end{acknowledgments}
 
 
-\begin{deluxetable*}{l r r r r}[!ht]
+\begin{deluxetable*}{l r r r r}[hbtp]
 \tabletypesize{\footnotesize}
 \tablecaption{\sname light curve fitting results and predicted ground-based transit midpoint events for \planete. \label{tab:table}}
 \tablehead{\\
@@ -353,6 +365,9 @@ T$_{14}$ [days] & $\mathcal{G}($ln$ 0.19, 1)$ & $\mathcal{G}($ln$ 0.23, 1)$ & $\
 
 \bibliography{main}
 \bibliographystyle{aasjournal}
+
+
+
 
 %% Include this line if you are using the \added, \replaced, \deleted
 %% commands to see a summary list of all changes at the end of the article.
