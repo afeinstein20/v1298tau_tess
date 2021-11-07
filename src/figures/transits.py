@@ -136,7 +136,7 @@ line = [1, 1,
         2, 2, 
         3, 3]
 titles = ['Planet d', 'Planets b, c, & e', 
-          'Planet d & c', 'Planet c', 
+          'Planets d & c', 'Planet c', 
           'Planet d', 'Planets b & c']
 occurrence = [1, [2, 0, 3], 
               [4, 5], 6, 
