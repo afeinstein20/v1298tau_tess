@@ -105,7 +105,7 @@ Since the \texttt{tica} FFIs do not provide an error estimate, we fit for flux e
 
 where $y$ is the normalized flux array about zero, and $\sigma_l$  and $\sigma_j$ are used to define the light curve noise and in-transit jitter, which is designed to capture the added noise produced by starspot crossing events. $\sigma_l$  and $\sigma_j$ are also used as the first and second terms in our rotation model, which we defined as a stochastically-driven, damped harmonic oscillator, defined by the \texttt{SHOTerm} in \texttt{celerite2} \citep{dfm17}.
 
-We modeled the background within out GP. We defined a quadratic trend with respect to time for varying the background flux, where each polynomial coefficient was drawn from a normal distribution. Then, we generated a Vandermonde matrix ($A$) of time. This is a way of introducing a polynomial least-squares regression with respect to time. The final background flux was calculated by taking $bkg = A \cdot trend$.  
+We modeled the background within our GP. We defined a quadratic trend with respect to time for varying the background flux, where each polynomial coefficient was drawn from a normal distribution. Then, we generated a Vandermonde matrix ($A$) of time. This is a way of introducing a polynomial least-squares regression with respect to time. The final background flux was calculated by taking $bkg = A \cdot trend$.  
 
 We performed an MCMC sampling fit to each parameter.\footnote{A Jupyter notebook detailing our model can be found \href{https://github.com/afeinstein20/v1298tau\_tess/blob/main/notebooks/TESS\_V1298Tau.ipynb}{here}.} We ran 3 chains with 500 tuning steps and 5000 draws. We discarded the tuning samples from the posterior chains before calculating our best-fit parameters. Our results are presented in Table~\ref{tab:table}, along with our selected priors for each parameter we fit. We verified our chains converged via visual inspection and following the diagnostic provided by \cite{Geweke92}.
 
@@ -113,6 +113,7 @@ We present our final GP model for stellar variability, planet transits, and best
 
 
 \subsection{Constraining \planete's Period}
+
 \sname (EPIC~210818897) was observed during Campaign 4 of the \textit{K2} mission. There was a single transit of \planete in the original \textit{K2} data, which occurred roughly in the middle of the campaign. Since no other transits were detected, this provides a lower period limit of 36~days. Using the original transit timing from \textit{K2} and this new transit timing from \tess, we developed a new method for constraining the period of \planete. For this analysis, we used the \texttt{EVEREST 2.0} \citep{luger18} version of the \textit{K2} light curve. 
 
 Determining the period of a planet from two transits with a significant time gap between surveys has previously been constrained by fitting for orbital periods using MCMC sampling, phase-folding all available transits on the derived transit times and periods, and computing a reduced-$\chi^2$ fit to a flat line \citep{becker19}. Orbital periods providing a match to a flat line with a likelihood exceeding some threshold are then ruled out. In our new method, we fit transit models of many discrete periods at each step of the MCMC sampler, rather than post-processing from our posterior.
@@ -137,7 +138,7 @@ where $X$ is the \tess\ light curve and $n$ is the period being tested. We addit
 
 The summation of all log likelihoods is used to compute the posterior likelihood for each sampled value of $q$. This analysis assumes a circular orbit for planet e and uses stellar density constraints via priors on the stellar mass and radius.\footnote{A Jupyter notebook detailing our model for constraining the period for \planete can be found \href{https://github.com/afeinstein20/v1298tau\_tess/blob/main/notebooks/V1298Tau\_e.ipynb}{here}.}
 
-We ran 5 chains with 500 tuning steps and 5000 draws. We discarded the tuning steps before our analysis. Our results are presented in Figure~\ref{fig:period_e}, where we plot the median period for each tested harmonic against the posterior probability of each harmonic.
+We ran 3 chains with 500 tuning steps and 5000 draws. We discarded the tuning steps before our analysis. Our results are presented in Figure~\ref{fig:period_e}, where we plot the median period for each tested harmonic against the posterior probability of each harmonic.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
@@ -168,20 +169,9 @@ We compare the differences in transit $R_p/R_\star$ between the \textit{K2} and 
 \end{figure*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A shallower transit depth at redder wavelengths is supported by the dusty outflow model presented in \citep{wang19}, while transits in the optical probe lower atmospheric pressures, resulting in larger transit depths \citep{gao20}. Therefore, the difference in transit depths could be due to the difference in bandpass wavelength coverage between \textit{Kepler} \citep[400-900~nm;][]{Howell2014} and \tess\ \citep[600-1000~nm][]{Ricker2015}. 
+A shallower transit depth at redder wavelengths is supported by the dusty outflow model presented in \citep{wang19}, while transits in the optical probe lower atmospheric pressures, resulting in larger transit depths \citep{gao20}. Therefore, the difference in transit depths could be due to the difference in bandpass wavelength coverage between \textit{Kepler} \citep[400-900~nm;][]{Howell2014} and \tess\ \citep[600-1000~nm;][]{Ricker2015}. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\iffalse
-\begin{figure}[!b]
-\begin{center}
-\includegraphics[width=0.465\textwidth,trim={0.25cm 0 0 0}]{figures/folded_compare.pdf}
-\caption{Phase-folded \tess\ data (gray) with the new best-fit model (color) compared to the original \textit{K2} data (black). The residuals between the \tess\ data and each fit are shown underneath. A comparison of measured $R_p/R_\star$ are presented at the bottom, with a 1-to-1 line plotted in black for reference. The transit depths for \planetknown are shallower in the new \tess\ data, while the transit depth for \planete is deeper. We speculate the variation in transit depths could be due to starspot crossing events.} \label{fig:compare}
-\end{center}
-\end{figure}
-\fi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The ability of a planet to retain hazes/transition hazes is negatively correlated with its equilibrium temperature, $T_{eq}$, internal temperature $T_{int}$, and positively correlated with mass, $M_{core}$. \allplanets have calculated $T_{eq} < 1000$\,K, assuming an albedo = 0 \citep{David2019a}. Young planets are believed to have high $T_{int}$ due to ongoing gravitational contraction \citep{gu04}. The combination of these two parameters make these planets more likely to host extended high-altitude hazes in their atmospheres, while outflow winds lead to the formation of transition hazes \citep{gao20}. 
+The ability of a planet to retain hazes/transition hazes is negatively correlated with its equilibrium temperature, $T_{eq}$, internal temperature $T_{int}$, and positively correlated with mass, $M_{core}$. \allplanets have calculated $T_{eq} < 1000$\,K, assuming an albedo~=~0 \citep{David2019a}. Young planets are believed to have high $T_{int}$ due to ongoing gravitational contraction \citep{gu04}. The combination of these two parameters make these planets more likely to host extended high-altitude hazes in their atmospheres, while outflow winds lead to the formation of transition hazes \citep{gao20}. 
 
 However, it is more likely we are seeing either contamination/dilution from another nearby star or the presence of starspots. As highlighted in Figure~\ref{fig:tpf}, there is a bright (\tess\ magnitude $<$ 14) just next to \sname. Since we did not include this source in our light curve PSF-modeling, it is possible there is some light from this source in our data, therefore making the transits of \planetknown appear $\sim 10$\% shallower in our \tess\ data than the original \textit{K2} measurements. The \tess\ Input Catalog \citep{stassun18} lists a contamination value of 0.315 for \sname, which could sufficiently produce the decrease in transit depths presented here. 
 
@@ -189,16 +179,7 @@ We check for signs of dilution by creating light curves for individual pixels ar
 
 A change in transit depth could additionally be due to starspots, either from a nearby source or from the surface of \sname. In the context of starspots on \sname, both starspot/active region crossing events, where the planets directly transit over these inhomogeneities, or asymmetric starspots/active region distributions located off the transit chord could lead to differences in transit depths and shapes. In the case of starspot crossing events, we would expect to see added variability to the transit shape. Assuming we are not underestimating our error bars, this is readily seen in the transit of \planetb, both in the \tess\ and \textit{K2} data (Figure~\ref{fig:compare}). 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\iffalse
-\begin{figure}[!t]
-\begin{center}
-\includegraphics[width=0.465\textwidth,trim={0.25cm 0 0 0}]{static/dilution.pdf}
-\caption{The change in $R_p/R_\star$ as a function of pixel for \planetb (top) and \planete (bottom) overlaid with a sky image of \sname taken with the Digitized Sky Survey (DSS) r-band. \sname is highlighted by the white circle; nearby sources with \tess\ magnitudes $T_\textrm{mag} < 14$ are marked with blue x's.} \label{fig:dilution}
-\end{center}
-\end{figure}
-\fi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Radius of \planete}
 
 Contrary to \planetknown, we measure a transit radius that is $\sim 3\sigma$ larger in the new \tess\ data than what was found in the original \textit{K2} data \citep{David2019a}. The difference in radii could be consistent with a large scale height, low mean-molecular weight atmosphere around \planete \citep{deMooij12}. It is also possible the atmosphere of \planete is dominated by species with stronger absorption features at longer wavelengths, such as CO, H$_2$O, and CH$_4$ \citep{carter09}. 
@@ -250,8 +231,8 @@ ln($\sigma_j$) & $-1.36_{-5.06}^{+4.96}$ & $\mathcal{G}($ln$(0.1\sigma_\textrm{f
 \hline\
 \textit{Planets} & \textit{c} & \textit{d} & \textit{b} & \textit{e}\\
 \hline
-$T_0$ [BKJD - 2454833] & $4648.1576_{-0.0036}^{+0.0040}$ & $4645.4158^{+0.0024}_{-0.0028}$& $4648.0927_{-0.0017}^{+0.0015}$ & $4648.8002 \pm0.0014$\\
-P [days]               & $8.2481_{-0.0022}^{+0.0018}$ & $12.4007_{-0.0020}^{+0.0023}$ & $24.1371_{-0.0021}^{+0.0022}$ & $50.29 \pm 6.62$ \\
+$T_0$ [BKJD - 2454833] & $4648.1576_{-0.0034}^{+0.0042}$ & $4645.4113_{-0.0021}^{+0.0023}$ & $4648.0913_{-0.0013}^{+0.0015}$ & $4648.7975_{-0.0014}^{+0.0012}$ \\
+P [days]               & $8.2479_{-0.0019}^{+0.0016}$ & $12.4030_{-0.0016}^{+0.0020}$ & $24.1382_{-0.0022}^{+0.0019}$ & $50.29 \pm 6.62$ \\
 $R_p/R_\star$          &  $0.0339 \pm 0.0014$ & $0.0405 \pm 0.0016$ & $0.0635 \pm 0.0019$ & $0.0685 \pm 0.0026$ \\
 $b$                    &  $0.14_{-0.10}^{+0.14}$ & $0.19_{-0.13}^{+0.12}$ & $0.45_{-0.04}^{+0.05}$ & $0.48_{-0.07}^{+0.06}$ \\
 T$_{14}$ [hours]        &  $4.66_{-0.43}^{+0.49}$ & $5.59_{-0.53}^{+0.57}$ & $6.42_{-0.61}^{+0.66}$ & $7.44_{-0.71}^{+0.79}$  \\
@@ -265,7 +246,6 @@ log($P$ [days]) & $\mathcal{G}($ln$ 8.25, 1)$ & $\mathcal{G}($ln$ 12.40, 1)$& $\
 log(depth [ppt]) & $\mathcal{G}($ln$ 1.45, 0.1)$ & $\mathcal{G}($ln$ 1.90, 0.1)$ & $\mathcal{G}($ln$ 4.90, 0.1)$ & $\mathcal{G}($ln$ 3.73, 0.1)$ \\
 $b$ & $\mathcal{U}[0, 1]$ & $\mathcal{U}[0, 1]$ & $\mathcal{U}[0, 1]$ & $\mathcal{U}[0, 1]$ \\
 T$_{14}$ [days] & $\mathcal{G}($ln$ 0.19, 1)$ & $\mathcal{G}($ln$ 0.23, 1)$ & $\mathcal{G}($ln$ 0.27, 1)$ &  $\mathcal{G}($ln$ 0.31, 1)$\\
-%\iffalse
 \hline \hline\
 \\
 \hline\
