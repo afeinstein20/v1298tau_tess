@@ -32,41 +32,21 @@ plt.rcParams['figure.facecolor'] = 'none'
 plt.rcParams['legend.facecolor'] = 'none'
 
 
-summary = Table.read('../../data/trace_planete.csv', format='csv')
+summary = Table.read('../../data/planet_e_posteriors.tab', format='csv')
 
-periods = np.arange(38,56,1,dtype=int)
-keys = ['logl_{}'.format(i) for i in periods]
-pkeys = ['period_{}'.format(i) for i in periods]
+plt.figure(figsize=(7,4))
 
-avg = 'logl'
-
-fig = plt.figure(figsize=(8,5))
-
-logl = summary[summary['col0']=='logl']['mean'].data
-
-post_prob = np.zeros(len(keys))
-means = np.zeros(len(keys))
-
-for i in range(len(keys)):
-
-    m1 = summary[summary['col0']==pkeys[i]]['mean'].data
-    
-    logl_p = summary[summary['col0']==keys[i]]['mean'].data
-    pp = np.exp(logl_p - logl)
-    post_prob[i] = pp
-    means[i] = m1 + 0.0 
-
-    plt.vlines(m1, -200, pp, lw=5, color='#742C64')
-
-
-plt.vlines(24.141445*2, -200, 100, color='#1A48A0', linestyle='--', lw=3,
-           label='2:1 resonance with V1298 Tau b = 48.28 Days')
-plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left',
-           ncol=2, mode="expand", fontsize=16.5,
-           borderaxespad=0.)
-plt.xlabel('Median Period [Days]')
-plt.ylabel('Posterior Probability')
-
-plt.yscale('log')
-plt.ylim(-20,0.01)
-plt.savefig('periode.pdf', rasterize=True, bbox_inches='tight', dpi=250)
+for i in range(len(p)):
+    plt.vlines(summary['period'][i], 0, 
+               np.abs(summary['posterior_prob'][i]), lw=5, color='#742C64')
+plt.vlines(24.1382*2, 0,1, linestyle='--', color=parula[60], lw=3,
+           label='2:1 resonance with V1298 Tau b = {} days'.format(np.round(24.1382*2,2)))
+plt.ylim(0.03,0.075)
+plt.xlabel('Median Period [days]', fontsize=18)
+plt.ylabel('Posterior Probability', fontsize=18)
+plt.legend(fontsize=14,bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left',
+           ncol=2, mode="expand", borderaxespad=0.)
+plt.xlim(43,62)
+plt.savefig('periode.pdf', 
+            bbox_inches='tight', dpi=250,
+            rasterize=True)
