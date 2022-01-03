@@ -87,7 +87,7 @@ Here we report on newly acquired \tess\ observations of \sname which help to ref
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[t!]
 \begin{center}
-\includegraphics[width=0.43\textwidth,trim={0.25cm 0 0 0}]{static/TESSaperture.pdf}
+\includegraphics[width=0.46\textwidth,trim={0.25cm 0 0 0}]{static/TESSaperture.pdf}
 \caption{The \tess\ \texttt{tica} FFI target pixel file (TPF) overlaid with a sky image of \sname taken with the Digitized Sky Survey (DSS) r-band. \sname is highlighted by the white circle; nearby sources with \tess\ magnitudes $< 14$ are marked with x's. The two stars with white x's (TICs 15756226 and 15756240) were simultaneously fit during our PSF-modeling. The one star with black x (TIC 15756236) is a bright nearby source that was not included in our PSF-modeling. While aperture photometry would be feasible for this system (yellow square), we found fitting three point-spread functions to the brightest stars extracted the cleanest light curve for \sname. \href{https://github.com/afeinstein20/v1298tau\_tess/blob/main/src/figures/tpf.py}{\githubicon}} \label{fig:tpf}
 \end{center}
 \end{figure}
@@ -102,7 +102,7 @@ We compared these new light curves to our original FFI light curves. We created 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}[hbtp]
 \begin{center}
-\includegraphics[width=0.7\textwidth,trim={0.25cm 0 0 0}]{static/transits.pdf}
+\includegraphics[width=0.9\textwidth,trim={0.25cm 0 0 0}]{static/transits.pdf}
 \caption{\sname extracted light curve from the SPOC-processed light curve for Sectors 43 and 44, with transits of \allplanets highlighted by color. Each subplot contains the raw, normalized \tess\ flux (top) and the GP model removed flux (de-trended flux; bottom). Top row: extracted light curve with over plotted with our best-fit GP model for stellar variability (black). Bottom three rows: zoomed-in regions around the transits present in the \tess\ data. The GP best-fit model is over-plotted on the raw, normalized flux. The best-fit transit models are over-plotted on the de-trended flux. For overlapping transits (sub-panel ``Planets b, c, \& e''), the sum of the transits is blotted in black.} \label{fig:transits}
 \end{center}
 \end{figure*}
@@ -165,7 +165,7 @@ We find the most likely period of \planete to be 44.17~days. We provide all test
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=0.42\textwidth,trim={0.25cm 0 0cm 0}]{static/periode.pdf}
+\includegraphics[width=0.44\textwidth,trim={0.25cm 0 0cm 0}]{static/periode.pdf}
 \caption{Our calculated posterior probability to constrain the period of \planete using transit timings from \textit{K2} and \tess. We tested discrete periods from $q=38-56$\,days and find the most likely period to be 44.17~days. The 2:1 resonance (48.28~days) with \planetb is plotted as the dashed vertical line. \href{https://github.com/afeinstein20/v1298tau\_tess/blob/main/src/figures/period\_e.py}{\githubicon}} \label{fig:period_e}
 \end{center}
 \end{figure}
@@ -185,7 +185,7 @@ The error bars from our MCMC fit on the radii of the planets are smaller than th
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}[!htb]
 \begin{center}
-\includegraphics[width=0.9\textwidth,trim={0.25cm 0 0 0}]{static/compare_together.pdf}
+\includegraphics[width=\textwidth,trim={0.25cm 0 0 0}]{static/compare_together.pdf}
 \caption{Left: Phase-folded \tess\ data (gray) with the new best-fit model (color) compared to the original \textit{K2} data (black). The residuals between the \tess\ data and each fit are shown underneath. Top right: The percent difference in measured $R_p/R_\star$ from \textit{K2} vs. \tess\ $R_p/R_\star$. A dashed line is shown at 0\% to help visually differentiate between measured increases and decreases in planetary radii. The transit depths for \planetknown are shallower in the new \tess\ data, while the transit depth for \planete is deeper. Bottom right: The change in $R_p/R_\star$ as a function of pixel for \planetb (left) and \planete (right) overlaid with a sky image of \sname taken with the Digitized Sky Survey (DSS) r-band. We speculate the variation in transit depths could be due to contamination from nearby bright stars or starspot crossing events. \href{https://github.com/afeinstein20/v1298tau_tess/blob/main/src/figures/dilution_check.py}{\githubicon}} \label{fig:compare}
 \end{center}
 \end{figure*}
