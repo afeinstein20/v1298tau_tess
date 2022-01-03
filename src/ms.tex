@@ -105,7 +105,7 @@ We compared these new light curves to our original FFI light curves. We created 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}[hbtp]
 \begin{center}
-\includegraphics[width=0.7\textwidth,trim={0.25cm 0 0 0}]{figures/transits.pdf}
+\includegraphics[width=0.9\textwidth,trim={0.25cm 0 0 0}]{figures/transits.pdf}
 \caption{\sname extracted light curve from the SPOC-processed light curve for Sectors 43 and 44, with transits of \allplanets highlighted by color. Each subplot contains the raw, normalized \tess\ flux (top) and the GP model removed flux (de-trended flux; bottom). Top row: extracted light curve with over plotted with our best-fit GP model for stellar variability (black). Bottom three rows: zoomed-in regions around the transits present in the \tess\ data. The GP best-fit model is over-plotted on the raw, normalized flux. The best-fit transit models are over-plotted on the de-trended flux. For overlapping transits (sub-panel ``Planets b, c, \& e''), the sum of the transits is blotted in black.} \label{fig:transits}
 \end{center}
 \end{figure*}
@@ -116,7 +116,7 @@ We compared these new light curves to our original FFI light curves. We created 
 % planet fits
 We simultaneously modeled the transits of \allplanets and the stellar variability using the open-source packages \exoplanet \citep{exoplanet2019, exoplanet2021} and \texttt{PyMC3} \citep{Salvatier16}. Transit timings were originally identified using updated ephemerides from \textit{Spitzer} (Livingston et al. in prep) and we account for potential transit timing variations (TTVs) in our model using \texttt{exoplanet}'s \texttt{TTVOrbit} function. This functionality allows us to fit the individual transit time per each transit, while all other orbital and planetary parameters remain the same.
 
-\texttt{exoplanet.TTVOrbit} worked well when fitting \planetknown, due to there being multiple transits. For \planete, we found the GP model with TTVs optimized around hyperparameters that accommodated transits where there were none; as such, we used a model without accounting for TTVs to fit the parameters for \planete. All other transit parameters (presented in Table~\ref{tab:table}) were initialized using values from \cite{David2019a}. We assumed a quadratic limb darkening law, following the reparameterization described by \cite{kipping13}; this method allows for an efficient and uniform sampling of limb-darkened transit models.
+\texttt{exoplanet.TTVOrbit} worked well when fitting \planetknown, due to there being multiple transits. However, with \planete being a single-transit event, we found the GP model with TTVs optimized our hyperparameters to accommodate for transits where there were none; as such, we used a model without accounting for TTVs to fit the parameters for \planete. All other transit parameters (presented in Table~\ref{tab:table}) were initialized using values from \cite{David2019a}. We assumed a quadratic limb darkening law, following the reparameterization described by \cite{kipping13}; this method allows for an efficient and uniform sampling of limb-darkened transit models.
 
 % light curve fits
 
@@ -353,6 +353,8 @@ TTVs [days] & $\mathcal{G}(T_{0,c}, 0.1)$ & $\mathcal{G}(T_{0,d}, 0.1)$ & $\math
 
 \bibliography{main}
 \bibliographystyle{aasjournal}
+
+
 
 
 %% Include this line if you are using the \added, \replaced, \deleted
