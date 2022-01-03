@@ -161,16 +161,16 @@ The summation of all log likelihoods is used to compute the posterior likelihood
 
 We ran 3 chains with 500 tuning steps and 5000 draws. We discarded the tuning steps before our analysis. Our results are presented in Figure~\ref{fig:period_e}, where we plot the median period for each tested harmonic against the posterior probability of each harmonic.
 
-We find the most likely period of \planete to be 44.17~days. We provide all tested periods and posterior probabilities in Table~\ref{tab:e}. Our period estimate is at a 4-$\sigma$ disagreement with the period measured in a potential radial velocity signal for \planete presented in \cite{suarez21}. This derived period estimate suggests that \planete is in a near 2:1 mean motion resonance with \planetb. If the period of \planete is confirmed to be within the presented range, this could indicate that \allplanets are in a nearly 4-planet resonant chain.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=0.44\textwidth,trim={0.25cm 0 0cm 0}]{static/periode.pdf}
+\includegraphics[width=0.44\textwidth,trim={0.25cm 0 0cm 0}]{figures/periode.pdf}
 \caption{Our calculated posterior probability to constrain the period of \planete using transit timings from \textit{K2} and \tess. We tested discrete periods from $q=38-56$\,days and find the most likely period to be 44.17~days. The 2:1 resonance (48.28~days) with \planetb is plotted as the dashed vertical line. \href{https://github.com/afeinstein20/v1298tau\_tess/blob/main/src/figures/period\_e.py}{\githubicon}} \label{fig:period_e}
 \end{center}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We find the most likely period of \planete to be 44.17~days. We provide all tested periods and posterior probabilities in Table~\ref{tab:e}. Our period estimate is at a 4-$\sigma$ disagreement with the period measured in a potential radial velocity signal for \planete presented in \cite{suarez21}. This derived period estimate suggests that \planete is in a near 2:1 mean motion resonance with \planetb. If the period of \planete is confirmed to be within the presented range, this could indicate that \allplanets are in a nearly 4-planet resonant chain.
 
 Independent ground-based monitoring of the system may be able to observe another transit of the outermost known planet in this system. Using the Transit Service Query Form on the NASA Exoplanet Archive \citep{Akeson2013}, we provide several potential transit midpoint events for all fitted periods in Table~\ref{tab:e}.
 
