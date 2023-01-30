@@ -8,7 +8,7 @@ import batman
 from astropy.table import Table
 
 
-COLOR = 'k'#'#FFFAF1'
+COLOR = 'w'#'#FFFAF1'
 plt.rcParams['font.size'] = 16
 plt.rcParams['text.color'] = COLOR
 plt.rcParams['axes.labelcolor'] = COLOR
@@ -42,7 +42,7 @@ plt.rcParams['legend.facecolor'] = 'none'
 edgecolor = '#05021f'
 k2_ec = '#b8b4b2'
 
-parula = np.load('/Users/arcticfox/parula_colors.npy')[np.linspace(0,160,4,dtype=int)]
+parula = np.load('/Users/belugawhale/parula_colors.npy')[np.linspace(0,160,4,dtype=int)]
 parula = ['#eb9c3b', '#74BB43', '#1A48A0', '#742C64', '#74BB43', '#eb9c3b',
           '#eb9c3b', '#74BB43', '#1A48A0', '#eb9c3b','#eb9c3b', '#74BB43','#eb9c3b']
 #parula = ['#B3240B', '#74BB43', '#0494EC', '#BC84DC']
@@ -87,12 +87,13 @@ yflat = flux - model
 ax1 = fig3.add_subplot(gs[0, :])
 ax1.set_title('Normalized & De-Trended TESS Light Curves for V1298 Tau', fontsize=26, y=1.3)
 
+c = '#ADACB5'
 ax1.errorbar(time, flux, yerr=flux_err,
-             color='w', marker='o', linestyle='',
-             markeredgecolor=edgecolor, zorder=1,
-             ecolor=edgecolor)#, capsize=3)
+             color=c, marker='o', linestyle='',
+             markeredgecolor=c, zorder=1,
+             ecolor=c)
 
-ax1.plot(time, model, lw=2.5, color='k', zorder=2,
+ax1.plot(time, model, lw=2.5, color='w', zorder=2,
          label='GP Model')
 ax1.set_xlim(time[0], time[-1])
 ax1.set_xticklabels([])
@@ -103,9 +104,9 @@ rax = divider.append_axes("bottom", size='65%', pad=0)
 ax1.set_ylabel('Flux [ppt]', fontsize=25, y=0.2)
 
 rax.errorbar(time, yflat, yerr=flux_err,
-             color='w', marker='o', linestyle='',
-             markeredgecolor=edgecolor, zorder=1,
-             ecolor=edgecolor)#, capsize=3)
+             color=c, marker='o', linestyle='',
+             markeredgecolor=c, zorder=1,
+             ecolor=c)
 
 rax.set_xlim(time[0], time[-1])
 rax.set_xlabel('Time [BKJD - 2454833]', fontsize=25)
@@ -212,16 +213,16 @@ for i in range(len(widths)):
     
     ax3.errorbar(time[q], flux[q], 
                  yerr=flux_err[q],
-                 color='w', marker='o', linestyle='',
-                 markeredgecolor=edgecolor, zorder=3,
-                 ecolor=edgecolor)
+                 color=c, marker='o', linestyle='',
+                 markeredgecolor=c, zorder=3,
+                 ecolor=c)
     rax3.errorbar(time[q], yflat[q], 
                   yerr=flux_err[q],
-                  color='w', marker='o', linestyle='',
-                  markeredgecolor=edgecolor, zorder=3,
-                  ecolor=edgecolor)
+                  color=c, marker='o', linestyle='',
+                  markeredgecolor=c, zorder=3,
+                  ecolor=c)
     
-    ax3.plot(time[q], model[q], c='k', lw=3, zorder=4)
+    ax3.plot(time[q], model[q], c='w', lw=3, zorder=4)
 
     ax3.set_ylim(np.nanmin(flux[q])-0.5, np.nanmax(flux[q])+0.5)
     
@@ -266,4 +267,5 @@ for ax in all_axes:
     ax.set_rasterized(True)
 plt.subplots_adjust(hspace=0.4, wspace=0.3)
     
-plt.savefig('transits.pdf', rasterize=True, bbox_inches='tight', dpi=250)
+plt.savefig('transits.png', transparent=True,
+	    rasterize=True, bbox_inches='tight', dpi=250)
